@@ -1,0 +1,10 @@
+#header {
+  background-image: url('../img/ciel.jpg');
+  height: 200px;
+  width: 1311px;
+}
+
+body {
+  font-family: 'Lora', serif;
+  background-color: #eadccf;
+}
