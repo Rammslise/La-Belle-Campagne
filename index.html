@@ -12,48 +12,85 @@
 <body>
   <section class="contenair">
     <header>
-      <div class="row" id="header">
+      <div class="row" >
         <div class="col-md-12">
-      <p style="text-align:center"><img src="assets/img/titre.png" alt="titre" id="title"></p> 
-        </header>
-        <nav class="navbar navbar-dark bg-danger">
-          <a class="navbar-brand" href="#">Légumes</a>
-          <a class="navbar-brand" href="#">Fruits</a>
-          <a class="navbar-brand" href="#">Produits laitiers</a>
-          <a class="navbar-brand" href="#">Viandes</a>
-          <a class="navbar-brand" href="#">Autres produits locaux</a>
-        </nav>
+          <p style="text-align:center"><img src="assets/img/titre.png" alt="titre" id="title"></p>
+        </div>
+      </header>
+
+      <nav class="navbar navbar-dark bg-danger">
+        <div class="dropdown">
+          <a class="btn btn-danger" href="#" role="button" id="vegetablesMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="assets/img/legumes.png" width="50" height="50" class="d-inline-block align-top" alt="">
+            Légumes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Légumes disponibles</a>
+            <a class="dropdown-item" href="#">Nos producteurs</a>
+            <a class="dropdown-item" href="#">Vos recettes</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a class="btn btn-danger" href="#" role="button" id="fruitsMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="assets/img/fruits.png" width="50" height="50" class="d-inline-block align-top" alt="">
+            Fruits
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Fruits disponibles</a>
+            <a class="dropdown-item" href="#">Nos producteurs</a>
+            <a class="dropdown-item" href="#">Vos recettes</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a class="btn btn-danger" href="#" role="button" id="fruitsMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="assets/img/cremerie.png" width="50" height="50" class="d-inline-block align-top" alt="">
+            Crémerie
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Fromages</a>
+            <a class="dropdown-item" href="#">Yaourts</a>
+            <a class="dropdown-item" href="#">Lait</a>
+            <a class="dropdown-item" href="#">Glaces</a>
+            <a class="dropdown-item" href="#">Oeufs</a>
+          </div>
+        </div>
+
+        <a class="navbar-brand" href="#">Viandes</a>
+        <a class="navbar-brand" href="#">Autres produits locaux</a>
+      </nav>
+    </div>
+  </div>
+  <div class="row" id="body">
+    <div class="row col-md-12">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
         </div>
       </div>
-      <div class="row" id="body">
-        <div class="row col-md-12">
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-      </div>
 
 
 
-  </section>
-  <script src="assets/library/jquery/jquery-3.4.1.js"></script>
-  <script src="assets/library/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-  <script src="assets/js/script.js"></script>
+</section>
+<script src="assets/library/jquery/jquery-3.4.1.js"></script>
+<script src="assets/library/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
