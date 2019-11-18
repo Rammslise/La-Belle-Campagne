@@ -1,10 +1,42 @@
 header {
-  background-image: url('../img/ciel.jpg');
-  height: 200px;
-  width: 1311px;
+  background-image: url('../img/header/ciel.jpg');
+  height: 255px;
+  background-size: cover;
 }
-
 body {
   font-family: 'Lora', serif;
   background-color: #eadccf;
+}
+#footer {
+  text-align: center;
+  color: black;
+  background-color: #c6b49c;
+}
+#footer span{
+  color: #c5822d;
+  font-size: 18px;
+}
+#footer ul{
+  list-style: none;
+}
+#footer a{
+  color: #5c272f;
+}
+#smallScreen{
+  background-color: #6af6ad;
+}
+/* utilisation de media query afin d'adapter le site sur petit et grand écran, fait en sorte que dès que le bouton panier passe la ligne, cela se met en menu burger*/
+@media only screen and (max-width:1083px){
+  #hightScreen{
+    display :none;
+  }
+  #smallScreen{
+    z-index: 900;
+    width: 105%;
+  }
+}
+@media only screen and (min-width:1084px){
+  #smallScreen{
+    display: none;
+  }
 }
