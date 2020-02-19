@@ -1,0 +1,67 @@
+<!-- Je découpe la partie de mon site avec tout en haut un header afin de pouvoir y intégrer une image, d'aérer mon code et le rendre simple de lecture-->
+<header>
+    <!-- Ici nous avons l'image du header avec un row et un col permettant de centrer l'image -->
+    <div class="row p-0 m-0">
+        <div class="col md-7 text-right" id="titleImage">
+            <img src="assets/img/header/titre.png" class="img-responsive mx-auto" />
+            <span class="border-bottom-0"></span>
+        </div>
+        
+        <!-- Présence de boutons Connexion et Inscription -->
+        <div class="col-md-5 text-right" id="headButton">
+            <div class="dropdown">
+                <a class="btn btn-outline-success" href="formulaire.php">Inscription</a>
+                <a class="btn btn-outline-success" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Se connecter
+                </a>
+                <form class="dropdown-menu p-4">
+                    <div class="form-group">
+                        <label for="dropdownMail">Adresse mail</label>
+                        <input type="email" class="form-control" id="DropdownFormEmail" placeholder="email@example.com" />
+                    </div>
+                    <div class="form-group">
+                        <label for="dropdownPassword">Mot de passe</label>
+                        <input type="password" class="form-control" id="DropdownFormPassword" placeholder="Mot de passe" />
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+                            <label class="form-check-label" for="dropdownCheck2">
+                                Se souvenir de moi
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Connexion</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navbar -->
+    <nav class="navbar ">
+        <a class="btn btn-primary" href="#">
+            <img src="assets/img/header/legumes.png" width="40" height="30" class="d-inline-block" alt="vegetables">
+            Légumes
+        </a>
+        <a class="btn btn-primary" href="#">
+            <img src="assets/img/header/fruits.png" width="30" height="30" class="d-inline-block align-top" alt="fruits">
+            Fruits
+        </a>
+           <a class="btn btn-primary" href="#">
+            <img src="assets/img/header/viande.png" width="30" height="30" class="d-inline-block align-top" alt="meat">
+            Viandes
+        </a>
+           <a class="btn btn-primary" href="#">
+            <img src="assets/img/header/cremerie.png" width="30" height="30" class="d-inline-block align-top" alt="creamery">
+            Crémerie
+        </a>
+           <a class="btn btn-primary" href="#">
+            <img src="assets/img/header/abeille.png" width="30" height="30" class="d-inline-block align-top" alt="grocery">
+            Épicerie fine
+        </a>
+        <a class="btn btn-outline-success" href="#">
+         <img src="assets/img/header/panier.png" width="30" height="30" class="d-inline-block align-top" alt="cart">
+         Mon panier
+     </a>
+    </nav>
+</header>

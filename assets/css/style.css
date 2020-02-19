@@ -7,6 +7,12 @@ body {
   font-family: 'Lora', serif;
   background-color: #eadccf;
 }
+
+.carousel img{
+    height:600px;
+    width: 700px;    
+}
+
 #footer {
   text-align: center;
   color: black;
@@ -16,7 +22,7 @@ body {
   color: #c5822d;
   font-size: 18px;
 }
-#footer ul{
+#footer ul, li{
   list-style: none;
 }
 #footer a{
@@ -24,6 +30,9 @@ body {
 }
 #smallScreen{
   background-color: #6af6ad;
+}
+.navbar a{
+    padding: .4rem 1.5rem;
 }
 /* utilisation de media query afin d'adapter le site sur petit et grand écran, fait en sorte que dès que le bouton panier passe la ligne, cela se met en menu burger*/
 @media only screen and (max-width:1083px){
