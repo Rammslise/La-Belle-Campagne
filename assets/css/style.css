@@ -1,51 +1,107 @@
-header {
-  background-image: url('../img/header/ciel.jpg');
-  height: 255px;
-  background-size: cover;
-}
-body {
-  font-family: 'Lora', serif;
-  background-color: #eadccf;
+header{
+    background-image: url("../img/header/headerImg.jpg");
+    min-height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
 }
 
+ul {
+    list-style: none;  
+}
+
+#listHeader{
+    display: flex;   
+}
+
+#homeCarousel{
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+
+}
 .carousel img{
-    height:600px;
-    width: 700px;    
+    height:370px;
+    width: 650px;   
 }
 
-#footer {
-  text-align: center;
-  color: black;
-  background-color: #c6b49c;
+#footer{
+    background-color: #eeeeee;
 }
-#footer span{
-  color: #c5822d;
-  font-size: 18px;
+
+#calendar, #agricultureFest{
+    height:350px;
+    width: 380px;   
 }
-#footer ul, li{
-  list-style: none;
+
+#accountList{
+    display: flex;
+    flex-direction: column;
 }
-#footer a{
-  color: #5c272f;
+
+#formBody{
+    background-color: #eeeeee;
 }
-#smallScreen{
-  background-color: #6af6ad;
+
+#connexionContainer{
+    display: flex;
+    justify-content:  center;
 }
-.navbar a{
-    padding: .4rem 1.5rem;
+
+#connexionContainer form{
+    width: 15rem;
 }
-/* utilisation de media query afin d'adapter le site sur petit et grand écran, fait en sorte que dès que le bouton panier passe la ligne, cela se met en menu burger*/
-@media only screen and (max-width:1083px){
-  #hightScreen{
-    display :none;
-  }
-  #smallScreen{
-    z-index: 900;
-    width: 105%;
-  }
+
+/* Hover concernant l'image du salon de l'agriculture */
+.view-first img {
+  transition: all 0.2s linear;
+  width: 300px;
+  height: 200px;
 }
-@media only screen and (min-width:1084px){
-  #smallScreen{
-    display: none;
-  }
+
+.view-first .mask {
+  opacity: 0;
+  background-color: rgba(58, 1, 132, 0.44);
+  transition: all 0.4s ease-in-out;
+}
+
+.view-first h2 {
+  transform: translateY(-100px);
+  opacity: 0;
+  font-family: Raleway, serif;
+  transition: all 0.2s ease-in-out;
+}
+
+.view-first p {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+
+.view-first a.info {
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+/* */
+.view-first:hover img {
+  transform: scale(1.1);
+}
+
+.view-first:hover .mask {
+  opacity: 1;
+}
+
+.view-first:hover h2,
+.view-first:hover p,
+.view-first:hover a.info {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.view-first:hover p {
+  transition-delay: 0.1s;
+}
+
+.view-first:hover a.info {
+  transition-delay: 0.2s;
 }
