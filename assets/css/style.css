@@ -29,7 +29,7 @@ ul {
     background-color: #eeeeee;
 }
 
-#calendar, #agricultureFest{
+#calendar, #cowPhoto{
     height:350px;
     width: 380px;   
 }
@@ -42,66 +42,120 @@ ul {
 #formBody{
     background-color: #eeeeee;
 }
-
-#connexionContainer{
+/*#connexionContainer{
     display: flex;
     justify-content:  center;
-}
+}*/
 
 #connexionContainer form{
-    width: 15rem;
+    width: 14rem;
 }
 
-/* Hover concernant l'image du salon de l'agriculture */
-.view-first img {
-  transition: all 0.2s linear;
-  width: 300px;
-  height: 200px;
+#idTitle{
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 1rem;
 }
 
-.view-first .mask {
-  opacity: 0;
-  background-color: rgba(58, 1, 132, 0.44);
-  transition: all 0.4s ease-in-out;
+#registrationForm{
+    margin-left: auto;
+    margin-right: auto;
+    width: 30em; 
 }
 
-.view-first h2 {
-  transform: translateY(-100px);
-  opacity: 0;
-  font-family: Raleway, serif;
-  transition: all 0.2s ease-in-out;
+/*Partie Hover sur la photo avec la vache */
+.container{
+    padding: 1em 0;
+    float: left;
+    width: 50%;
+}
+@media screen and (max-width: 640px){
+    .container{
+        display: block;
+        width: 100%;
+    }
 }
 
-.view-first p {
-  transform: translateY(100px);
-  opacity: 0;
-  transition: all 0.2s linear;
+@media screen and (min-width: 900px){
+    .container{
+        width: 33.33333%;
+    }
 }
 
-.view-first a.info {
-  opacity: 0;
-  transition: all 0.2s ease-in-out;
-}
-/* */
-.view-first:hover img {
-  transform: scale(1.1);
+.container .title{
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-.view-first:hover .mask {
-  opacity: 1;
+.content {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    overflow: hidden;
 }
 
-.view-first:hover h2,
-.view-first:hover p,
-.view-first:hover a.info {
-  opacity: 1;
-  transform: translateY(0px);
+.content .content-overlay {
+    background: rgba(0,0,0,0.7);
+    position: absolute;
+    height: 99%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
 }
 
-.view-first:hover p {
-  transition-delay: 0.1s;
+.content:hover .content-overlay{
+    opacity: 1;
 }
 
-.view-first:hover a.info {
-  transition-delay: 0.2s;
+.content-image{
+    width: 100%;
 }
+
+.content-details {
+    position: absolute;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.content:hover .content-details{
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+}
+
+.content-details h3{
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+}
+
+.content-details p{
+    color: #fff;
+    font-size: 0.8em;
+}
+
+.fadeIn-bottom{
+    top: 80%;
+}
+/* Fin */

@@ -1,28 +1,36 @@
-<?php
-include 'utilities/header.php';
-?>
+<?php require 'utilities/header.php'; ?>
+
+    <!--Message de succès ou d'erreur -->
+    <?php if (isset($message)) { ?>
+        <div class="alert alert-success" role="alert">
+            <?= $message ?>
+        </div>
+    <?php } ?>
+    
 <h3 class="text-center">Se connecter</h3>
 <div class="row">   
-    <div class="col-4">
+    <div class="col-4 ml-2">
         <h5>Nouveau client / Nouveau producteur</h5>
         <h6>Inscription</h6>
         <p>En vous créant un compte, vous allez pouvoir commander et régler directement.</p>
-        <button type="button" class="btn btn-success disabled rounded-pill">Continuer</button>
+        <input type="button" class="btn btn-success disabled rounded-pill" onclick=window.location.href='views/formulaire.php'; value="Continuer" />
     </div>
-    <div id="connexionContainer" class="col-4">
+    <span class="border-right border-dark"></span>
+    <div id="connexionContainer" class="col-4 ml-4">
         <form method="POST" action="">
             <div>
                 <h5>Identification</h5>
                 <h6>Déjà chez nous</h6>
-                <p>Adresse mail :</p>
-                <input type="text"  />
-                <p>Mot de passe :</p>
-                <input type="text" />
-                <button type="submit" name="submit" class="btn btn-success disabled rounded-pill pt-2">Se connecter</button>
+                <p>Adresse mail :
+                    <input type="text"  /> </p>
+                <p>Mot de passe :
+                    <input type="text" /> </p>
+                <button type="submit" name="submit" class="btn btn-success disabled rounded-pill mt-2">Se connecter</button>
             </div>
         </form>
     </div>
-    <div class="col-4">         
+    <span class="border-right border-dark"></span>
+    <div class="col-3">         
         <ul id="accountList">
             <h5>Compte</h5>
             <li>> Connexion / Enregistrement</li>
@@ -34,6 +42,4 @@ include 'utilities/header.php';
         </ul>
     </div>
 </div>
-<?php
-include 'utilities/footer.html';
-?>
+<?php require 'utilities/footer.html'; ?>

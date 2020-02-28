@@ -32,8 +32,6 @@ CREATE TABLE 7ie1z_roles(
 
 CREATE TABLE 7ie1z_clients(
         id             Int  Auto_increment  NOT NULL ,
-        lastname       Varchar (100) NOT NULL ,
-        firstname      Varchar (100) NOT NULL ,
         mail           Varchar (5) NOT NULL ,
         password       Varchar (100) NOT NULL ,
         id_7ie1z_roles Int NOT NULL

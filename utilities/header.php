@@ -9,8 +9,9 @@
         <meta name= "viewport" content="width=device-width, initial-scale=1" />
         <!-- Définit la relation entre le document courant et une ressource externe-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora&display=swap" />
-        <link rel="stylesheet" href="assets/bootstrap-4.3.1-dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
+        <link rel="stylesheet" href="../assets/bootstrap-4.3.1-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../assets/css/style.css" />
         <title>La Belle Campagne</title>
     </head>
     <header>
@@ -22,7 +23,7 @@
                 </blockquote>
             </div>
             <div class="col-4 text-center">
-                <img src="assets/img/header/logoHeader.png" id="logoHeader"/>
+                <img src="../assets/img/header/logoHeader.png" id="logoHeader"/>
             </div>  
             <div class="col-4 mt-2">
                 <div class="headerLink">
