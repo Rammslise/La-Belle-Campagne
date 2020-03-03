@@ -4,6 +4,7 @@
 class Client extends Database {
 
     public $id;
+    public $pseudo;
     public $mail;
     public $password;
     public $confirmPassword;
@@ -33,12 +34,13 @@ class Client extends Database {
         //Éxecution de la requête
         try {
             // Préparation de la requete au serveur de bdd et insertion de marqueurs nominatifs
-            $results = $this->db->prepare("INSERT INTO `7ie1z_clients` (`mail`, `password`, `id_7ie1z_roles`)
-                            VALUES ( :mail, :password, :id_roles)");
+            $results = $this->db->prepare("INSERT INTO `7ie1z_clients` (`mail`, `password`, `pseudo`, `id_7ie1z_roles`)
+                            VALUES ( :mail, :password, :pseudo, :id_roles)");
 
             // Association des marqueurs nommées aux véritables informations
             $results->bindValue(':mail', $this->mail, PDO::PARAM_STR);
             $results->bindValue(':password', $this->password, PDO::PARAM_STR);
+            $results->bindValue(':pseudo', $this->pseudo, PDO::PARAM_STR);
             $results->bindValue(':id_roles', $this->id_7ie1z_roles, PDO::PARAM_INT);
 
             // Éxecution de la requête, renvoi TRUE en cas de succès, sinon FALSE à l'appel de la méthode createClient(ctrl).
@@ -52,7 +54,7 @@ class Client extends Database {
 
     /**
      * Méthode permettant de vérifier si un mail est déjà existant
-     * @return booléen
+     * @return boolean
      */
     public function hasUniqueMail() {
         try {
@@ -69,6 +71,73 @@ class Client extends Database {
             }
         } catch (PDOException $e) {
             die('erreur : ' . $e->getMessage());
+        }
+    }
+
+    /*
+     * Méthode permettant  de récupérer le profil Client par le mail
+     * @array
+     */
+
+    public function clientProfile() {
+        try {
+            $results = $this->db->prepare('SELECT `id`, 
+                                                                                 `mail`, 
+                                                                                 `password`, 
+                                                                                 `pseudo`, 
+                                                                                 `id_7ie1z_roles` 
+                                                                   FROM `7ie1z_clients`
+                                                                   WHERE `mail` =:mail');
+            $results->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+            $results->execute();
+            return $results->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            die('erreur : ' . $e->getMessage());
+        }
+    }
+
+    /*
+     * Méthode pour récupérer le profil Client par l'id
+     * @array
+     */
+
+    public function ClientProfileById() {
+        $results = $this->db->prepare('SELECT  `id`,
+                                                                              `mail`,            
+                                                                              `password`, 
+                                                                              `pseudo`,    
+                                                                              `id_7ie1z_roles` 
+                                                               FROM `7ie1z_clients`
+                                                               WHERE `id`= :id');
+        $results->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+        try {
+            $results->execute();
+            return $results->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            die('Error :' . $e->getMessage());
+        }
+    }
+
+    /*
+     * Méthode permettant au Client de modifier ses données
+     * @array
+     */
+
+    public function editClientProfile() {
+        try {
+            $results = $this->db->prepare('UPDATE `client` 
+                               SET        `pseudo` = :pseudo, 
+                                             `email` = :email, 
+                                             `password` = :password,                                            
+                               WHERE `id` = :id');
+            $results->bindValue(':pseudo', $this->pseudo, PDO::PARAM_STR);
+            $results->bindValue(':email', $this->email, PDO::PARAM_STR);
+            $results->bindValue(':password', $this->password, PDO::PARAM_STR);
+            $results->bindValue(':id', $this->id, PDO::PARAM_INT);
+            return $results->execute();
+        } catch (PDOException $e) {
+            echo 'Connexion échouée : ' . $e->getMessage();
         }
     }
 

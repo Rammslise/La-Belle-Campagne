@@ -1,5 +1,4 @@
 <?php
-// Démarrage de la session
 session_start();
 
 require_once '../init/functions.php';
@@ -9,12 +8,18 @@ require_once '../models/client.php';
 require_once '../models/producer.php';
 require_once '../controllers/formulaireCtrl.php';
 require '../utilities/header.php';
-require '../utilities/navbar.php';
 ?>
+
+<!--Message erreur -->
+<?php if (isset($message)) { ?>
+    <div class="alert alert-danger" role="alert">
+        <?= $message ?>
+    </div>
+<?php } ?>
 
 <div class="row">
     <div class="col-12 text-center">
-        <h2>Créer mon compte</h2>
+        <h2><span>Créer mon compte</span></h2>
     </div>
 </div>
 <div class="row p-4">
@@ -37,11 +42,25 @@ require '../utilities/navbar.php';
         <!-- Formulaire client -->
         <div class="tab-pane fade show active" id="client" role="tabpanel" aria-labelledby="home-tab">   
             <form method="POST" action="" id="formClient">
+                 <!-- Enregistrer son mot de passe-->
+                <div class="form-group row">
+                    <label for="pseudo" class="col-6 col-form-label">Pseudo*</label>
+                    <div class="col-10">
+                        <input type="text" class="form-control" name="pseudo" placeholder="10 carac. max" id="pseudo"  />
+                        <small class="text-danger">         
+                            <?php
+                            if (isset($client->formErrors['pseudo'])) {
+                                echo $client->formErrors['pseudo'];
+                            }
+                            ?>
+                        </small>
+                    </div>
+                </div>
                 <!-- Inscription par mail-->
                 <div class="form-group row">
                     <label for="mail" class="col-6 col-form-label">Email*</label>
                     <div class="col-10">
-                        <input type="email" class="form-control" id="mail" name="mail" placeholder="adresse@example.com" value="<?= isset($client->mail) ? $patient->mail : ''; ?>" />
+                        <input type="email" class="form-control" id="mail" name="mail" placeholder="adresse@example.com" value="<?= isset($client->mail) ? $client->mail : ''; ?>" />
                         <small class="text-danger">       
                             <!-- Insertion du message d'erreur sur les champs-->
                             <?php

@@ -6,12 +6,20 @@ header{
     background-position: center; 
 }
 
+body{
+    background-color: #f3f2ee;
+}
+
 ul {
     list-style: none;  
 }
 
 #listHeader{
     display: flex;   
+}
+
+#navbar{
+    background-color: #cfcfd1;
 }
 
 #homeCarousel{
@@ -26,7 +34,7 @@ ul {
 }
 
 #footer{
-    background-color: #eeeeee;
+    background-color: #cfcfd1;
 }
 
 #calendar, #cowPhoto{
@@ -42,25 +50,25 @@ ul {
 #formBody{
     background-color: #eeeeee;
 }
-/*#connexionContainer{
-    display: flex;
-    justify-content:  center;
-}*/
 
 #connexionContainer form{
     width: 14rem;
 }
 
-#idTitle{
+#idTitle, #identifyProfile{
     text-decoration: underline;
     text-decoration-color: currentColor;
     text-underline-offset: 1rem;
 }
 
-#registrationForm{
+#registrationForm, #editClientProfile{
     margin-left: auto;
     margin-right: auto;
     width: 30em; 
+}
+
+span{
+    font-weight: bold;
 }
 
 /*Partie Hover sur la photo avec la vache */

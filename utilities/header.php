@@ -10,6 +10,7 @@
         <!-- Définit la relation entre le document courant et une ressource externe-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora&display=swap" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
+        <link rel="shortcut icon" type="image/png" href="../assets/img/header/icone.png"/>
         <link rel="stylesheet" href="../assets/bootstrap-4.3.1-dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="../assets/css/style.css" />
         <title>La Belle Campagne</title>
@@ -25,17 +26,22 @@
             <div class="col-4 text-center">
                 <img src="../assets/img/header/logoHeader.png" id="logoHeader"/>
             </div>  
-            <div class="col-4 mt-2">
+            <div class="col-4 mt-2">              
                 <div class="headerLink">
                     <ul id="listHeader">
-                        <li><a href="../connexion.php">Compte |</a></li>
+                        <?php if (isset($_SESSION['user_role'])) { ?>
+                            <a href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?></a> |
+                        <?php } else { ?>                                                                                                   
+                            <li><a href="../views/connexion.php">Inscription</a>|</li>
+                            <li><a href="../views/connexion.php">Connexion</a>|</li>                         
+                        <?php } ?>
                         <li>
-                            <img src="https://img.icons8.com/wired/25/000000/shopping-basket.png">
-                            <a href="#">Panier </a>
+                            <img src="https://img.icons8.com/wired/25/000000/shopping-basket.png" alt="basketLogo" />
+                            <a href="../views/basket.php">Panier </a>
                         </li>
                     </ul>
                 </div>
             </div>            
         </div>  
     </header>
-    <?php include 'utilities/navbar.php'; ?>
+    <?php require 'navbar.php'; ?>
