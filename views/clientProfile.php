@@ -21,8 +21,7 @@ include '../utilities/header.php';
     <div class="row ml-4 p-4">
         <div class="col-12">
             <form method="POST" action="" class="justify-content-center">         
-                <span id="identifyProfile">Votre identifiant </span>
-                <button type="submit" name="validateSubmit" href="" class="btn btn-success disabled rounded-pill ml-2">Modifier</button>
+                <span class="identifyProfile">Votre identifiant </span>
                 <a href="" name="logout"><img class="ml-1" src="https://img.icons8.com/ios/32/000000/logout-rounded-up.png" /></a>
                 <div class="pseudoProfile mt-4">
                     <div class="form-group row">
@@ -54,12 +53,16 @@ include '../utilities/header.php';
                         </div>
                     </div>
                 </div>
-                <div class="passwordProfile">
+                <button type="submit" name="validateSubmit" href="" class="btn btn-success disabled rounded-pill ml-2 mb-2"><span>Modifier</span></button>
+            </form>
+            <form method="POST" action="">
+                <span class="identifyProfile">Votre mot de passe</span>
+                <div class="passwordProfile mt-2">
                     <div class="form-group row">
                         <label for="password" class="col-6 col-form-label">Mot de passe*</label>
                         <div class="col-10">
-                            <input type="password" class="form-control" id="password" name="password"  value="<?= $clientProfile->password ?>" />
-                            <small class="text-danger">       
+                            <input type="password" class="form-control" id="password" name="password"  />
+                            <small class="text-danger">
                                 <?php
                                 if (isset($profile->formErrors['password'])) {
                                     echo $profile->formErrors['password'];
@@ -69,9 +72,9 @@ include '../utilities/header.php';
                         </div>
                     </div>
                 </div>
-                <button type="submit" name="deleteSubmit" href="" class="btn btn-danger disabled rounded-pill mt-2">Supprimer</button>                 
+                <button type="submit" name="deleteSubmit" href="" class="btn btn-danger disabled rounded-pill mt-2"><span>Supprimer</span></button>                 
+            </form>
         </div>
-        </form>
     </div>
 </div>
 <?php include '../utilities/footer.html'; ?>

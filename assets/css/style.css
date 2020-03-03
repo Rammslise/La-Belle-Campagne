@@ -55,7 +55,7 @@ ul {
     width: 14rem;
 }
 
-#idTitle, #identifyProfile{
+#idTitle, .identifyProfile{
     text-decoration: underline;
     text-decoration-color: currentColor;
     text-underline-offset: 1rem;

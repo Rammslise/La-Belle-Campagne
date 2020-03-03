@@ -29,7 +29,7 @@
             <div class="col-4 mt-2">              
                 <div class="headerLink">
                     <ul id="listHeader">
-                        <?php if (isset($_SESSION['user_role'])) { ?>
+                        <?php if (isAdmin() || isClient() || isProducer()) { ?>
                             <a href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?></a> |
                         <?php } else { ?>                                                                                                   
                             <li><a href="../views/connexion.php">Inscription</a>|</li>
