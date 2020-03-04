@@ -204,4 +204,4 @@ include '../utilities/header.php';
         </div>
     </div>
 </div>
-<?php require '../utilities/footer.html'; ?>
+<?php require '../utilities/footer.php'; ?>

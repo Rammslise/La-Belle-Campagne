@@ -1,13 +1,14 @@
 header{
     background-image: url("../img/header/headerImg.jpg");
-    min-height: 400px;
+    min-height: 300px;
+    width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; 
 }
 
-body{
-    background-color: #f3f2ee;
+a{
+    
 }
 
 ul {
@@ -15,11 +16,29 @@ ul {
 }
 
 #listHeader{
-    display: flex;   
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+#linkHeader{
+    display: flex;  
 }
 
 #navbar{
-    background-color: #cfcfd1;
+    background-color: #f3f2ee;
+}
+
+body{
+    background-color: #fffdf6;
+}
+
+#actuality{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
 }
 
 #homeCarousel{
@@ -29,17 +48,14 @@ ul {
 
 }
 .carousel img{
-    height:370px;
-    width: 650px;   
+    height:300px;
+    width: 400px;   
 }
 
-#footer{
-    background-color: #cfcfd1;
-}
-
-#calendar, #cowPhoto{
+#calendar, #cowPhoto, #homeCarousel{
     height:350px;
-    width: 380px;   
+    width: 450px;   
+    border: 5px solid;
 }
 
 #accountList{
@@ -73,9 +89,8 @@ span{
 
 /*Partie Hover sur la photo avec la vache */
 .container{
-    padding: 1em 0;
     float: left;
-    width: 50%;
+    width: 100%;
 }
 @media screen and (max-width: 640px){
     .container{
@@ -107,7 +122,7 @@ span{
 .content .content-overlay {
     background: rgba(0,0,0,0.7);
     position: absolute;
-    height: 99%;
+    height: 100%;
     width: 100%;
     left: 0;
     top: 0;
@@ -167,3 +182,7 @@ span{
     top: 80%;
 }
 /* Fin */
+
+#footer{
+    background-color: #f3f2ee;
+}

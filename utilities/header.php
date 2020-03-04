@@ -16,33 +16,32 @@
         <title>La Belle Campagne</title>
     </head>
     <header>
-        <div class="row">
-            <div class="col-md-4 p-1 mt-4">
-                <blockquote class="blockquote text-center">
-                    <p class="mb-0">'Il faut cultiver notre jardin'</p>
-                    <footer class="blockquote-footer">Voltaire <cite title="Source Title">Candide ou l'Optimisme</cite></footer>
-                </blockquote>
-            </div>
-            <div class="col-md-4 text-center">
-                <img src="../assets/img/header/logoHeader.png" id="logoHeader"/>
-            </div>  
-            <div class="col-md-4 mt-2">              
-                <div class="headerLink">
-                    <ul id="listHeader">
-                        <?php if (isAdmin() || isClient() || isProducer()) { ?>
-                            <a href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?></a> | 
-                            <a href="../views/deconnexion.php">Déconnexion</a> |
-                        <?php } else { ?>                                                                                                   
-                            <li><a href="../views/connexion.php">Inscription</a>|</li>
-                            <li><a href="../views/connexion.php">Connexion</a>|</li>                         
-                        <?php } ?>
-                        <li>
-                            <img src="https://img.icons8.com/wired/25/000000/shopping-basket.png" alt="basketLogo" />
-                            <a href="../views/basket.php">Panier </a>
-                        </li>
-                    </ul>
+        <div class="row" id="listHeader">
+                <div class="col-md-3 mt-4 text-center">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">'Il faut cultiver notre jardin'</p>
+                        <footer class="blockquote-footer">Voltaire <cite title="Source Title">Candide ou l'Optimisme</cite></footer>
+                    </blockquote>
                 </div>
-            </div>            
-        </div>  
+                <div class="col-md-4 text-center">
+                    <img src="../assets/img/header/logoHeader.png" class="img-fluid" alt="logoTree" id="logoHeader"/>
+                </div>  
+                <div class="col-md-3 mt-4">              
+                        <ul id="linkHeader">
+                            <?php if (isAdmin() || isClient() || isProducer()) { ?>
+                                <a href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?></a> | 
+                                <a href="../views/deconnexion.php">Déconnexion</a> |
+                            <?php } else { ?>                                                                                                   
+                                <li><a href="../views/connexion.php">Inscription</a>|</li>
+                                <li><a href="../views/connexion.php">Connexion</a>|</li>                         
+                            <?php } ?>
+                            <li>
+                                <a href="../views/basket.php" >Panier</a>   
+                                <img src="../assets/img/header/basket.png" class="img-fluid mb-2" alt="basketLogo" width="20"/>           
+                            </li>
+                        </ul>
+                    </div>
+                </div>            
+            </div>  
     </header>
     <?php include 'navbar.php'; ?>

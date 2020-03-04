@@ -92,4 +92,4 @@ include '../utilities/header.php';
         </div>
     </div>
 </div>
-<?php include '../utilities/footer.html'; ?>
+<?php include '../utilities/footer.php'; ?>

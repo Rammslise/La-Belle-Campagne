@@ -64,4 +64,4 @@ include '../utilities/header.php';
         </ul>
     </div>
 </div>
-<?php include '../utilities/footer.html'; ?>
+<?php include '../utilities/footer.php'; ?>

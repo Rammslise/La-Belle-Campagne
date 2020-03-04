@@ -1,3 +1,4 @@
+<?php ?>
 <footer id="footer">
     <div class="row p-0 m-0 mt-5" id="footer">
         <div class="col-md-3">
@@ -40,3 +41,4 @@
     <script src="../assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <script src="../assets/js/script.js"></script>
 </footer>
+
