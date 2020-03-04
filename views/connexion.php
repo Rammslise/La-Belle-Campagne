@@ -1,25 +1,26 @@
 <?php
 session_start();
 
-require_once '../init/credentials.php';
-require_once '../init/functions.php';
-require_once '../models/database.php';
-require_once '../models/client.php';
-require_once '../models/producer.php';
-require_once '../controllers/connexionCtrl.php';
+require '../init/credentials.php';
+require '../init/functions.php';
+require '../models/database.php';
+require '../models/client.php';
+//require '../models/producer.php';
+require '../controllers/connexionCtrl.php';
 include '../utilities/header.php';
 ?>
 
+
 <h3 class="text-center"><span>Se connecter</span></h3>
 <div class="row">   
-    <div class="col-4 ml-2">
+    <div class="col-md-4 ml-2">
         <h5>Nouveau client / Nouveau producteur</h5>
         <h6>Inscription</h6>
         <p>En vous créant un compte, vous allez pouvoir commander et régler directement.</p>
         <input type="button" class="btn btn-success disabled rounded-pill" onclick=window.location.href='formulaire.php'; value="Continuer" />
     </div>
     <span class="border-right border-dark"></span>
-    <div id="connexionContainer" class="col-4 ml-4">
+    <div id="connexionContainer" class="col-md-4 ml-4">
         <form method="POST" action="">
             <div>
                 <h5>Identification</h5>
@@ -51,7 +52,7 @@ include '../utilities/header.php';
         </form>
     </div>
     <span class="border-right border-dark"></span>
-    <div class="col-3">         
+    <div class="col-md-3">         
         <ul id="accountList">
             <h5>Compte</h5>
             <li>> Inscription / Connexion</li>

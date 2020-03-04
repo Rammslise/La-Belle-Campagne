@@ -17,20 +17,21 @@
     </head>
     <header>
         <div class="row">
-            <div class="col-4 p-1 mt-4">
+            <div class="col-md-4 p-1 mt-4">
                 <blockquote class="blockquote text-center">
                     <p class="mb-0">'Il faut cultiver notre jardin'</p>
                     <footer class="blockquote-footer">Voltaire <cite title="Source Title">Candide ou l'Optimisme</cite></footer>
                 </blockquote>
             </div>
-            <div class="col-4 text-center">
+            <div class="col-md-4 text-center">
                 <img src="../assets/img/header/logoHeader.png" id="logoHeader"/>
             </div>  
-            <div class="col-4 mt-2">              
+            <div class="col-md-4 mt-2">              
                 <div class="headerLink">
                     <ul id="listHeader">
                         <?php if (isAdmin() || isClient() || isProducer()) { ?>
-                            <a href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?></a> |
+                            <a href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?></a> | 
+                            <a href="../views/deconnexion.php">Déconnexion</a> |
                         <?php } else { ?>                                                                                                   
                             <li><a href="../views/connexion.php">Inscription</a>|</li>
                             <li><a href="../views/connexion.php">Connexion</a>|</li>                         
@@ -44,4 +45,4 @@
             </div>            
         </div>  
     </header>
-    <?php require 'navbar.php'; ?>
+    <?php include 'navbar.php'; ?>

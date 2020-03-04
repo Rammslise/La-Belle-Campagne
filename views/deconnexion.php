@@ -1,9 +1,7 @@
 <?php
-session_start();
-
-include '../utilities/header.php';
+require '../init/functions.php';
+require '../controllers/deconnexionCtrl.php';
 ?>
 
 
 
-<?php include '../footer.html'; ?>

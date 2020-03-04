@@ -9,6 +9,7 @@ class Client extends Database {
     public $password;
     public $confirmPassword;
     public $id_7ie1z_roles;
+    
     // Initialisation du tableau d'erreurs
     public $formErrors = array();
 
@@ -126,18 +127,34 @@ class Client extends Database {
 
     public function editClientProfile() {
         try {
-            $results = $this->db->prepare('UPDATE `client` 
+            $results = $this->db->prepare('UPDATE `7ie1z_clients` 
                                SET        `pseudo` = :pseudo, 
-                                             `email` = :email, 
-                                             `password` = :password,                                            
+                                             `mail` = :mail, 
+                                             `password` = :password,         
+                                             `id_7ie1z_roles` = :id_roles
                                WHERE `id` = :id');
             $results->bindValue(':pseudo', $this->pseudo, PDO::PARAM_STR);
-            $results->bindValue(':email', $this->email, PDO::PARAM_STR);
+            $results->bindValue(':mail', $this->mail, PDO::PARAM_STR);
             $results->bindValue(':password', $this->password, PDO::PARAM_STR);
+            $results->bindValue(':id_roles', $this->id_7ie1z_roles, PDO::PARAM_INT);
             $results->bindValue(':id', $this->id, PDO::PARAM_INT);
             return $results->execute();
         } catch (PDOException $e) {
             echo 'Connexion échouée : ' . $e->getMessage();
+        }
+    }
+
+    /**
+     *  Méthode permettant de supprimer un Client
+     * @return boolean
+     */
+    public function deleteClient() {
+        try {
+            $results = $this->db->prepare('DELETE FROM `7ie1z_clients` WHERE `id` = :id LIMIT 1');
+            $results->bindValue(':id', $this->id, PDO::PARAM_INT);
+            return $results->execute();
+        } catch (PDOException $e) {
+            echo 'Connexion echoué : ' . $e->getMessage();
         }
     }
 

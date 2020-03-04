@@ -1,8 +1,11 @@
 <?php
 session_start();
 
+require 'init/credentials.php';
+require 'init/functions.php';
+require 'controllers/indexCtrl.php';
+debugSession();
 include 'utilities/header.php';
-require_once 'controllers/indexCtrl.php';
 ?>
 
 <!--Succès de la création -->
@@ -15,11 +18,11 @@ require_once 'controllers/indexCtrl.php';
 <body>
     <h3 class="p-2 mb-1 text-center "><span>Dans l'actualité</span></h3>
     <div class="row">
-        <div class="col-4">
+        <div class="col-md-4">
             <img src="assets/img/body/calendar.jpg" id="calendar" alt="marchCalendar"/>
         </div>
         <!-- Carousel-->
-        <div class="col-4">
+        <div class="col-md-4">
             <div id="homeCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -38,7 +41,7 @@ require_once 'controllers/indexCtrl.php';
                 </div>
             </div>
         </div>
-        <div class="container col-4">
+        <div class="container col-md-4">
             <div class="content">
                 <a href="https://www.salon-agriculture.com" target="_blank">
                     <div class="content-overlay"></div>
