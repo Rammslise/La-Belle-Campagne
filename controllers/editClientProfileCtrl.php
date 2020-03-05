@@ -5,7 +5,7 @@ $profile = new Client();
 //regex MAIL
 define('MAIL_REGEX', '/\A[A-Z0-9.%+-]+@[A-Z0-9.-]+.[A-Z]{2,}\Z/i');
 
-if (isset($_POST['validate'])) {
+if (isset($_POST['submit'])) {
 
     $profile->id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
     $profile->id_7ie1z_roles = isset($_POST['roles']) ? htmlspecialchars($_POST['roles']) : '';

@@ -5,6 +5,7 @@ header{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; 
+    margin: 0;
 }
 
 a{
@@ -24,6 +25,7 @@ ul {
 
 #linkHeader{
     display: flex;  
+    justify-content: flex-end;
 }
 
 #navbar{
@@ -32,9 +34,10 @@ ul {
 
 body{
     background-color: #fffdf6;
+
 }
 
-#actuality{
+#actuality, #connexionContainer{
     display: flex;
     justify-content: space-between;
     margin: 0;
@@ -61,6 +64,8 @@ body{
 #accountList{
     display: flex;
     flex-direction: column;
+    padding: 0;
+    margin: 0;
 }
 
 #formBody{
@@ -183,6 +188,6 @@ span{
 }
 /* Fin */
 
-#footer{
+#footerContaint{
     background-color: #f3f2ee;
 }

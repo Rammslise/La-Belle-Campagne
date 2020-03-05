@@ -11,16 +11,16 @@ include '../utilities/header.php';
 ?>
 
 
-<h3 class="text-center"><span>Se connecter</span></h3>
-<div class="row">   
+<h3 class="text-center p-2"><span>Se connecter</span></h3>
+<div id="connexionContainer">   
     <div class="col-md-4 ml-2">
         <h5>Nouveau client / Nouveau producteur</h5>
         <h6>Inscription</h6>
         <p>En vous créant un compte, vous allez pouvoir commander et régler directement.</p>
-        <input type="button" class="btn btn-success disabled rounded-pill" onclick=window.location.href='formulaire.php'; value="Continuer" />
+        <a href="formulaire.php"><button name="continue" class="btn btn-success disabled rounded-pill"><span>Continuer</span></button></a>
     </div>
     <span class="border-right border-dark"></span>
-    <div id="connexionContainer" class="col-md-4 ml-4">
+    <div  class="col-md-4 ml-1">
         <form method="POST" action="">
             <div>
                 <h5>Identification</h5>
@@ -47,7 +47,7 @@ include '../utilities/header.php';
                         ?>
                     </small> 
                 </div>
-                <button type="submit" name="submitClient" class="btn btn-success disabled rounded-pill mt-2">Se connecter</button>
+                <button type="submit" name="submitClient" class="btn btn-success disabled rounded-pill mt-2"><span>Se connecter</span></button>
             </div>
         </form>
     </div>
