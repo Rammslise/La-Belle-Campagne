@@ -3,5 +3,5 @@
 define('HOSTNAME' , 'localhost');
 define('DBNAME' , 'campagne');
 define('USERNAME' , 'root');
-define('PASSWORD' , 'matthieu361990');
+define('PASSWORD' , '');
  ?>

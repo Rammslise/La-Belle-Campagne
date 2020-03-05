@@ -2,6 +2,11 @@
 
 $client = new Client();
 
+if (isset($_SESSION['message'])) {
+    $message = htmlspecialchars($_SESSION['message']);
+    unset($_SESSION['message']);
+}
+
 // Regex MAIL
 define('MAIL_REGEX', '/^[^\W]?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\.[a-zA-Z]{2,4}$/');
 

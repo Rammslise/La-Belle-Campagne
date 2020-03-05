@@ -10,13 +10,12 @@ require '../controllers/formulaireCtrl.php';
 include '../utilities/header.php';
 ?>
 
+<?php if (isset($message)) { ?>
+    <div class="alert alert-danger" role="alert">
+        <?= $message ?>
+    </div>
+<?php } ?>
 <div class="container-fluid">
-    <!--Message erreur -->
-    <?php if (isset($message)) { ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $message ?>
-        </div>
-    <?php } ?>
     <div class="row">
         <div class="col-md text-center">
             <h2 class="p-4"><span>Créer mon compte</span></h2>
@@ -204,5 +203,5 @@ include '../utilities/header.php';
             </div>
         </div>
     </div>
-<?php require '../utilities/footer.php'; ?>
+    <?php require '../utilities/footer.php'; ?>
 </div>

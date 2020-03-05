@@ -157,6 +157,37 @@ class Client extends Database {
             echo 'Connexion echoué : ' . $e->getMessage();
         }
     }
+    
+     /**
+     * méthode permettant de récupérer la liste de tous les clients
+     * @return array
+     */
+    public function getClientList($limit, $offset) {
+           try {
+        $results = $this->db->prepare('SELECT `id`,`pseudo`,`mail`, `password`, `id_7ie1z_roles`
+                                                               FROM `7ie1z_clients`
+                                                               LIMIT :limit OFFSET :offset');
+        $results->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $results->bindValue(':offset', $offset, PDO::PARAM_INT);   
+        $results->execute();
+            return $results->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            die('erreur : ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * méthode permettant de réaliser une pagination de  la liste de tous les patients
+     * @return array
+     */
+    public function pagingClientList() {
+        try {
+            $results = $this->db->query('SELECT  COUNT(*)  FROM `7ie1z_clients`');
+            return $results->fetchColumn();
+        } catch (PDOException $e) {
+            die('erreur : ' . $e->getMessage());
+        }
+    }
 
 }
 

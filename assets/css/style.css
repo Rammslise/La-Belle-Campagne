@@ -28,8 +28,8 @@ ul {
     justify-content: flex-end;
 }
 
-#navbar{
-    background-color: #f3f2ee;
+#headerNavbar{
+    background-color: #cfd3d2;
 }
 
 body{
@@ -189,5 +189,5 @@ span{
 /* Fin */
 
 #footerContaint{
-    background-color: #f3f2ee;
+    background-color: #cfd3d2;
 }

@@ -8,13 +8,13 @@ include 'utilities/header.php';
 ?>
 
 <body>
+    <?php if (isset($message)) { ?>
+        <div class="alert alert-success" role="alert">
+            <?= $message ?>
+        </div>
+    <?php } ?>
     <div class="container-fluid">
-        <!--Succès de la création -->
-        <?php if (isset($message)) { ?>
-            <div class="alert alert-success" role="alert">
-                <?= $message ?>
-            </div>
-        <?php } ?>
+        <!--Message -->       
         <h3 class="p-2 mt-2 mb-2 text-center "><span>Dans l'actualité</span></h3>
         <div  class="row" id="actuality">
             <div class="col-md-4">
@@ -51,7 +51,6 @@ include 'utilities/header.php';
                 </div>
             </div>
         </div>
-
         <!-- Mise en avant des produits-->
         <h3 class="p-2 mt-4 text-center"><span>La sélection du jour</span></h3>
         <div class="col-md-12">
@@ -90,8 +89,8 @@ include 'utilities/header.php';
                 </div>
             </div>
         </div>
-        <!-- La partie FOOTER  -->
-        <?php include 'utilities/footer.php'; ?>
     </div>
+    <!-- La partie FOOTER  -->
+    <?php include 'utilities/footer.php'; ?>
 </body>
 </html>

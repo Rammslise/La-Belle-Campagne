@@ -1,5 +1,5 @@
 <?php
-
+if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $_GET['id'] ){
 $profile = new Client();
 
 //regex MAIL
@@ -70,5 +70,9 @@ if (isset($_POST['submit'])) {
         header('Location: ../views/clientProfile.php');
         exit();
     }
+}
+} else {
+    header('Location: ../index.php');
+    exit();
 }
 ?>

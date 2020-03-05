@@ -72,7 +72,7 @@ if (isset($_POST['submitClient'])) {
         // Message de succès ou non
         if ($success) {
             $_SESSION['message'] = 'Votre compte a bien été créé, veuillez vous connecter';
-            header('Location: ../index.php');
+            header('Location: connexion.php');
             exit();
         } else {
             $message = 'Votre compte n\'a pas pu être créé';

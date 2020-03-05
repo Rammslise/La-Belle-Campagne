@@ -1,10 +1,11 @@
 <?php
-sessions_start();
+session_start();
 
-require '../init/functions';
+require '../init/functions.php';
 require '../init/credentials.php';
 require '../models/database.php';
 require '../models/client.php';
 require '../controllers/deleteClientCtrl.php';
+
 ?>
 

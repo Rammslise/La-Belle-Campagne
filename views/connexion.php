@@ -10,6 +10,11 @@ require '../controllers/connexionCtrl.php';
 include '../utilities/header.php';
 ?>
 
+ <?php if (isset($message)) { ?>
+        <div class="alert alert-success" role="alert">
+            <?= $message ?>
+        </div>
+    <?php } ?>
 
 <h3 class="text-center p-2"><span>Se connecter</span></h3>
 <div id="connexionContainer">   

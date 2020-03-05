@@ -1,7 +1,8 @@
 <?php ?>
-<footer class="m-0 p-4 mt-5" id="footerContaint">
-        <div class="row">
-            <div class="col-sm">
+<footer class="m-0 p-2 mt-5" id="footerContaint">
+  
+        <div class="row p-0 m-0">
+            <div class="col-sm-3">
                 <ul class="services">
                     <span>Nos services</span>
                     <li><a href="">Réservations</a></li>
@@ -9,7 +10,8 @@
                     <li><a href="">Les producteurs près de chez vous</a></li>
                 </ul>
             </div>
-            <div class="col-sm">
+            <span class="border-right border-dark"></span>
+            <div class="col-sm-3">
                 <ul class="contactUs">
                     <span>Contactez-nous</span>
                     <li><a href="">support@labellecampagne.com</a></li>
@@ -18,7 +20,8 @@
                     <li><a href="">À propos de nous</a></li>
                 </ul>
             </div>
-            <div class="col-sm">
+            <span class="border-right border-dark"></span>
+            <div class="col-sm-3">
                 <ul class="findUs">
                     <span>Retrouvez-nous</span>
                     <li>
@@ -31,7 +34,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm">
+            <span class="border-right border-dark"></span>
+            <div class="col-sm-2">
                 <ul class="application">
                     <span>Avec vous !</span>
                     <li>
@@ -42,7 +46,7 @@
             </div>
         </div>
         <div class="col-sm">
-            <p class="text-center"><a href="" title="legalNotice">Mentions légales</a> - <a href="#">Conditions générales d'utilisations</a></p>
+            <p class="text-center mt-2"><a href="" title="legalNotice">Mentions légales</a> - <a href="#">Conditions générales d'utilisations</a></p>
         </div>
     </div>
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
