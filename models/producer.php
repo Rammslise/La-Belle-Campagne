@@ -4,14 +4,15 @@
 class Producer extends Database {
 
     public $id;
-    public $name;
-    public $address;
-    public $zip;
     public $mail;
     public $password;
     public $confirmPassword;
-    public $description;
+    public $nameCompany;
+    public $lastname;
+    public $firstname;
+    public $address;
     public $picture;
+    public $description;
     public $id_7ie1z_roles;
     
     // Initialisation du tableau d'erreurs
@@ -39,12 +40,18 @@ class Producer extends Database {
         //Éxecution de la requête
         try {
             // Préparation de la requête au serveur de bdd
-            $results = $this->db->prepare("INSERT INTO `7ie1z_producers` (`mail`, `password`, `id_7ie1z_roles`)
-                                                  VALUES ( :mail, :password, :id_roles)");
-
+            $results = $this->db->prepare("INSERT INTO `7ie1z_producers` (`mail`, `password`, `lastname`, `firstname`, `nameCompany`,  `address`, `picture`, `description`, `id_7ie1z_roles`)
+                                                  VALUES ( :mail, :password, :lastname, :firstname, :nameCompany, :address, :picture, :description, :id_roles)");
+            
             // association des marqueurs nommées aux véritables informations
-            $results->bindValue(':lastname', $this->mail, PDO::PARAM_STR);
-            $results->bindValue(':firstname', $this->password, PDO::PARAM_STR);
+            $results->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+            $results->bindValue(':password', $this->password, PDO::PARAM_STR);
+            $results->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
+            $results->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
+            $results->bindValue(':nameCompany', $this->nameCompany, PDO::PARAM_STR);
+            $results->bindValue(':address', $this->password, PDO::PARAM_STR);
+            $results->bindValue(':picture', $this->password, PDO::PARAM_STR);
+            $results->bindValue(':description', $this->description, PDO::PARAM_STR);
             $results->bindValue(':id_roles', $this->id_7ie1z_roles, PDO::PARAM_INT);
 
             // Éxecution de la requête, renvoi TRUE en cas de succès, sinon FALSE là où j'appelle ma méthode createProducer(ctrl).

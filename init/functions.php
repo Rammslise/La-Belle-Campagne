@@ -10,13 +10,13 @@ function debug($data) {
 
 function debugSession() {
     if (isset($_SESSION['user_role'])){
-        echo '<p>'. $_SESSION['user_role'] .'</p>';
+        echo '<p>user_role :  '. $_SESSION['user_role'] .'</p>';
     }
      if (isset($_SESSION['user_id'])){
-        echo '<p>'. $_SESSION['user_id'] .'</p>';
+        echo '<p>user_id : '. $_SESSION['user_id'] .'</p>';
     }
      if (isset($_SESSION['pseudo'])){
-        echo '<p>'. $_SESSION['pseudo'] .'</p>';
+        echo '<p>pseudo : '. $_SESSION['pseudo'] .'</p>';
     }
 }
 

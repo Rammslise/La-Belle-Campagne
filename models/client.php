@@ -164,7 +164,7 @@ class Client extends Database {
      */
     public function getClientList($limit, $offset) {
            try {
-        $results = $this->db->prepare('SELECT `id`,`pseudo`,`mail`, `password`, `id_7ie1z_roles`
+        $results = $this->db->prepare('SELECT `id`,`pseudo`,`mail`, `id_7ie1z_roles`
                                                                FROM `7ie1z_clients`
                                                                LIMIT :limit OFFSET :offset');
         $results->bindValue(':limit', $limit, PDO::PARAM_INT);
@@ -177,12 +177,50 @@ class Client extends Database {
     }
 
     /**
-     * méthode permettant de réaliser une pagination de  la liste de tous les patients
+     * méthode permettant de réaliser une pagination de  la liste de tous les clients
      * @return array
      */
     public function pagingClientList() {
         try {
             $results = $this->db->query('SELECT  COUNT(*)  FROM `7ie1z_clients`');
+            return $results->fetchColumn();
+        } catch (PDOException $e) {
+            die('erreur : ' . $e->getMessage());
+        }
+    }
+    
+        /**
+     * méthode permettant de trouver un client
+     * @return array
+     */
+    public function searchClient($perPage, $offset, $search) {
+        try {
+            $results = $this->db->prepare('SELECT `id`, `peudo`, `mail`
+                                                                   FROM `7ie1z_clients`
+                                                                   WHERE `pseudo` LIKE :search1  OR `mail` LIKE :search2
+                                                                   LIMIT :limit OFFSET :offset');
+            $results->bindValue(':search1', "%$search%", PDO::PARAM_STR);
+            $results->bindValue(':search2', "%$search%", PDO::PARAM_STR);
+            $results->bindValue(':limit', $perPage, PDO::PARAM_INT);
+            $results->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $results->execute();
+            return $results->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo 'Connexion echoué : ' . $e->getMessage();
+        }
+    }
+
+    /**
+     * méthode permettant de comptabiliser
+     * @return array
+     */
+    public function pagingClientSearchList($search) {
+        try {
+            $results = $this->db->prepare('SELECT  COUNT(*)  FROM `7ie1z_clients` 
+                                                                  WHERE `pseudo` LIKE :search1 OR `mail` LIKE :search2');
+            $results->bindValue(':search1', "%$search%", PDO::PARAM_STR);
+            $results->bindValue(':search2', "%$search%", PDO::PARAM_STR);
+            $results->execute();
             return $results->fetchColumn();
         } catch (PDOException $e) {
             die('erreur : ' . $e->getMessage());

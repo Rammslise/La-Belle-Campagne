@@ -15,11 +15,11 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
     $clientProfile = $client->ClientProfileById();
 
     if (!is_object($clientProfile)) {
-        header('Location: clientProfile.php');
+        header('Location: clientList.php');
         exit();
     }
 } else {
-    header('Location: ../index.php');
+    header('Location: clientList.php');
     exit();
 }
 ?>

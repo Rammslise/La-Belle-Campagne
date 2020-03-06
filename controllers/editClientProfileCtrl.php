@@ -1,5 +1,9 @@
 <?php
-if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $_GET['id'] ){
+//if(!isAdmin() || isProducer() || (isClient() && $_SESSION['user_id'] != $_GET['id'] )){
+//    header('Location: clientList.php');
+//    exit();
+//}
+
 $profile = new Client();
 
 //regex MAIL
@@ -71,8 +75,5 @@ if (isset($_POST['submit'])) {
         exit();
     }
 }
-} else {
-    header('Location: ../index.php');
-    exit();
-}
+
 ?>

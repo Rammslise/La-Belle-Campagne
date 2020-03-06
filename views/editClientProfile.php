@@ -1,5 +1,6 @@
 <?php
-require '../controllers/editClientProfileCtrl.php';
+
+require_once '../controllers/editClientProfileCtrl.php';
 ?>
 
 

@@ -17,9 +17,9 @@ if (isset($_POST['search']) || isset($_GET['search'])) {
     //récupération du mot clé
     $search = isset($_POST['search']) ? htmlspecialchars($_POST['search']) : htmlspecialchars($_GET['search']);
 
-    $totalClients = $patient->pagingPatientSearchList($search);
+    $totalClients = $client->pagingClientSearchList($search);
 } else {
-    $totalClients = $patient->pagingPatientList();
+    $totalClients = $client->pagingClientList();
 }
 //ceil — Arrondit au nombre supérieur
 $totalPages = ceil($totalClients / $perPage);
@@ -46,8 +46,8 @@ $offset = ($currentPage - 1) * $perPage;
  */
 if (isset($_POST['search']) || isset($_GET['search'])) {
     //récupération d'un ou plusieurs patients dans la liste
-    $clientList = $client->searchPatient($perPage, $offset, $search);
+    $clientList = $client->searchClient($perPage, $offset, $search);
 } else {
-    $clientList = $client->getPatientList($perPage, $offset);
+    $clientList = $client->getClientList($perPage, $offset);
 }
 ?>

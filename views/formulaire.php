@@ -5,8 +5,9 @@ require '../init/functions.php';
 require '../init/credentials.php';
 require '../models/database.php';
 require '../models/client.php';
-//require '../models/producer.php';
-require '../controllers/formulaireCtrl.php';
+require '../models/producer.php';
+require_once '../controllers/formulaireClientCtrl.php';
+require_once '../controllers/formulaireProducerCtrl.php';
 include '../utilities/header.php';
 ?>
 
@@ -18,12 +19,17 @@ include '../utilities/header.php';
 <div class="container-fluid">
     <div class="row">
         <div class="col-md text-center">
-            <h2 class="p-4"><span>Créer mon compte</span></h2>
+            <p class="h2 p-2"><span>Créer mon compte</span></p>
         </div>
     </div>
     <div class="row">
         <div class="col-md text-center">
-            <h4 id="idTitle">Vous êtes ?</h4>
+            <p class="h4" id="idTitle">Vous êtes ?</p>            
+        </div>        
+    </div>
+    <div class="row">
+        <div class="col-md text-center mt-2">
+            <small>* Champs obligatoires</small>
         </div>
     </div>
 
@@ -45,7 +51,7 @@ include '../utilities/header.php';
                     <div class="form-group row">
                         <label for="pseudo" class="col-md-6 col-form-label">Pseudo*</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="pseudo" placeholder="10 carac. max" id="pseudo"  />
+                            <input type="text" class="form-control" name="pseudo" placeholder="15 carac. max" id="pseudo"  />
                             <small class="text-danger">         
                                 <?php
                                 if (isset($client->formErrors['pseudo'])) {
@@ -101,7 +107,6 @@ include '../utilities/header.php';
                     <button type="submit" name="submitClient" class="btn btn-success rounded-pill"><span>Valider</span></button>
                 </form>
             </div>
-
             <!-- Formulaire Procuteur-->
             <div class="tab-pane fade" id="producer" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="tab-pane fade show active" id="client" role="tabpanel" aria-labelledby="home-tab">   
@@ -112,7 +117,11 @@ include '../utilities/header.php';
                             <div class="col-md-10">
                                 <input type="email" class="form-control" id="mailForm" placeholder="adresse@example.com" value="" />
                                 <small class="text-danger">         
-                                    <!-- Placer le tableau d'erreurs php-->
+                                    <?php
+                                    if (isset($producer->formErrors['mail'])) {
+                                        echo $producer->formErrors['mail'];
+                                    }
+                                    ?>
                                 </small>
                             </div>
                         </div>
@@ -120,9 +129,13 @@ include '../utilities/header.php';
                         <div class="form-group row">
                             <label for="password" class="col-md-6 col-form-label">Mot de passe*</label>
                             <div class="col-md-10">
-                                <input type="password" class="form-control" id="password" value="" />
+                                <input type="password" class="form-control" id="password" />
                                 <small class="text-danger">         
-                                    <!-- Placer le tableau d'erreurs php-->
+                                    <?php
+                                    if (isset($producer->formErrors['password'])) {
+                                        echo $producer->formErrors['password'];
+                                    }
+                                    ?>
                                 </small>
                             </div>
                         </div>
@@ -130,19 +143,53 @@ include '../utilities/header.php';
                         <div class="form-group row">
                             <label for="confirmPassword" class="col-md-6 col-form-label">Confirmation*</label>
                             <div class="col-md-10">
-                                <input type="password" class="form-control" id="confirmPassword"  value="" />
+                                <input type="password" class="form-control" id="confirmPassword"  />
                                 <small class="text-danger">         
-                                    <!-- Placer le tableau d'erreurs php-->
+                                    <?php
+                                    if (isset($producer->formErrors['confirmPassword'])) {
+                                        echo $producer->formErrors['confirmPassword'];
+                                    }
+                                    ?>
+                                </small>
+                            </div>
+                        </div> 
+                        <!-- Nom de famille -->
+                        <div class="form-group row">
+                            <div class="col-md-5">
+                                <label for="lastname" class="col-form-label">Votre nom*</label>                     
+                                <input type="text" class="form-control" id="lastname" name="lastname" />
+                                <small class="text-danger">         
+                                    <?php
+                                    if (isset($producer->formErrors['lastname'])) {
+                                        echo $producer->formErrors['lastname'];
+                                    }
+                                    ?>
+                                </small>
+                            </div>
+                            <!-- Prénom-->
+                            <div class="col-md-5">
+                                <label for="firstname" class="col-form-label">Votre prénom*</label>
+                                <input type="text" class="form-control" id="firstname" name="firstname" />
+                                <small class="text-danger">         
+                                    <?php
+                                    if (isset($producer->formErrors['firstname'])) {
+                                        echo $producer->formErrors['firstname'];
+                                    }
+                                    ?>
                                 </small>
                             </div>
                         </div>
                         <!-- Nom de l'exploitation agricole -->
                         <div class="form-group row">
-                            <label for="name"class="col-md-6 col-form-label" >Nom de la société*</label>
+                            <label for="nameCompany"class="col-md-6 col-form-label" >Nom de votre exploitation*</label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control" id="name" value="" />
+                                <input type="text" class="form-control" id="nameCompany" name="nameCompany" value="" />
                                 <small class="text-danger">         
-                                    <!-- Placer le tableau d'erreurs php-->
+                                    <?php
+                                    if (isset($producer->formErrors['nameCompany'])) {
+                                        echo $producer->formErrors['nameCompany'];
+                                    }
+                                    ?>
                                 </small>
                             </div>
                         </div>
@@ -150,39 +197,29 @@ include '../utilities/header.php';
                         <div class="form-group row">                    
                             <label for="address" class="col-md-6 col-form-label" >Adresse*</label>         
                             <div class="col-md-10">
-                                <textarea  id="address" name ="address" rows="4" cols="38" value="" >
+                                <textarea  id="address" name ="address" rows="4" cols="38" >
                                 </textarea>
                                 <small class="text-danger">         
-                                    <!-- Placer le tableau d'erreurs php-->
-                                </small>
-                            </div>
-                        </div>
-                        <!-- Code postal -->
-                        <div class="form-group row">
-                            <div class="col-md-5">
-                                <label for="zipCode" class="col-form-label">Code postal*</label>                     
-                                <input type="text" class="form-control" id="zipCode" name="zipCode" value="" />
-                                <small class="text-danger">         
-                                    <!-- Placer le tableau d'erreurs php-->
-                                </small>
-                            </div>
-                            <!-- Ville-->
-                            <div class="col-md-5">
-                                <label for="place" class="col-form-label">Lieu*</label>
-                                <input type="text" class="form-control" id="place" name="place" value="" />
-                                <small class="text-danger">         
-                                    <!-- Placer le tableau d'erreurs php-->
+                                    <?php
+                                    if (isset($producer->formErrors['address'])) {
+                                        echo $producer->formErrors['address'];
+                                    }
+                                    ?>
                                 </small>
                             </div>
                         </div>
                         <!-- Insertion du logo-->
                         <div class="form-group row">
                             <div class="col-10">
-                                <label for="logo" class="col-form-label">Logo*</label>
-                                <input type="file" class="form-control" id="logo" name="logo" />
-                                <small id="fileHelp" class="form-text text-muted">Insérer votre fichier</small>
+                                <label for="picture" class="col-form-label">Image*</label>
+                                <input type="file" class="form-control" id="picture" name="picture" />
+                                <small id="fileHelp" class="form-text text-muted">Format accepté, PNG, JPG, JPEG.</small>
                                 <small class="text-danger">         
-                                    <!-- Placer le tableau d'erreurs php-->
+                                    <?php
+                                    if (isset($producer->formErrors['picture'])) {
+                                        echo $producer->formErrors['picture'];
+                                    }
+                                    ?>
                                 </small>
                             </div>
                         </div>
@@ -190,10 +227,14 @@ include '../utilities/header.php';
                         <div class="form-group row">                    
                             <label for="descriptionProducer" class="col-md-6 col-form-label" >Description*</label>         
                             <div class="col-md-10">
-                                <textarea  id="descriptionProducer" name="descriptionProducer" rows="4" cols="38"> </textarea>
-                                <!-- Présentez-vous et votre exploitation. Décrivez les produits que vous vendez.-->
+                                <textarea  id="descriptionProducer" name="descriptionProducer" rows="4" cols="38" placeholder="Présentez-vous et votre exploitation. Décrivez les produits que vous vendez."> 
+                                </textarea>
                                 <small class="text-danger">         
-                                    <!-- Placer le tableau d'erreurs php-->
+                                    <?php
+                                    if (isset($producer->formErrors['description'])) {
+                                        echo $producer->formErrors['description'];
+                                    }
+                                    ?>
                                 </small>
                             </div>
                         </div>
@@ -203,5 +244,5 @@ include '../utilities/header.php';
             </div>
         </div>
     </div>
-    <?php require '../utilities/footer.php'; ?>
 </div>
+<?php require '../utilities/footer.php'; ?>

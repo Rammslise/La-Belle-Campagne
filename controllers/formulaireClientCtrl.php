@@ -1,22 +1,9 @@
 <?php
 
-// Création des instances de classe Client et Producer
 $client = new Client();
-//$producer = new Producer();
 
 // Regex MAIL
 define('MAIL_REGEX', '/^[^\W]?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\.[a-zA-Z]{2,4}$/');
-// Regex NOM DE LA SOCIÉTÉ et VILLE
-define('NAME_CITY_REGEX', '/^[a-zA-ZÀ-ÿ\' -]+$/');
-// Regex ADRESSE
-define('ADDRESS_REGEX', '/^[a-zA-ZÀ-ÿ\' -]{50}+$/');
-// Regex CODE POSTAL
-define('ZIP_CODE_REGEX', '/^[0-9]{5}$/');
-// Regex LOGO
-define('LOGO_REGEX', '');
-// Regex DESCRIPTION
-define('DESCRIPTION_REGEX', '/^[\da-zA-ZÀ-ÿ\' -]+$/');
-
 
 // Condition pour la partie du formulaire pour le Client.
 if (isset($_POST['submitClient'])) {
@@ -28,7 +15,6 @@ if (isset($_POST['submitClient'])) {
     $client->confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : '';
     $client->id_7ie1z_roles = 2;
 
-    
     // Validation du PSEUDO client
       if (empty($client->pseudo)) {
         $client->formErrors['pseudo'] = 'Champs obligatoire';
@@ -79,13 +65,5 @@ if (isset($_POST['submitClient'])) {
         }
     }
 }
-
-//if(isset($_POST['submitProducer'])){
-//    $producer->mail = isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '';
-//    $producer->password = isset($_POST['password']) ? htmlspecialchars($_POST ['password']) : '';
-//    $producer->confirmPassword = isset($_POST['confirmPassword']) ? htmlspecialchars($_POST['confirmPassword']) : '';
-//    $producer->name = isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '';
-//    $producer->address = isset($_POST['address']) ? htmlspecialchars($_POST['address']) : '';
-//}
 ?>
 

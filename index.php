@@ -3,7 +3,7 @@ session_start();
 
 require 'init/credentials.php';
 require 'init/functions.php';
-require 'controllers/indexCtrl.php';
+require_once 'controllers/indexCtrl.php';
 include 'utilities/header.php';
 ?>
 
@@ -68,7 +68,7 @@ include 'utilities/header.php';
                     <div class="card-body">
                         <h5 class="card-title">Fromage de chèvre frais nature</h5>
                         <p class="card-text">3,50€, 150g<button type="button" class="btn btn-success btn-sm ml-4">+</button></p>
-                        <p class="card-text"><small class="text-muted">Aux Petits délices de...</small><img src="assets/img/logo/logo1.png" class="ml-4 rounded-circle" name="goatJoyLogo" height="36" width="36"/></p>
+                        <p class="card-text"><small class="text-muted">Aux Petits délices de...</small><img src="assets/img/logo/goatLogo.png" class="ml-4 rounded-circle" name="goatLogo" height="36" width="36"/></p>
                     </div>
                 </div>
                 <div class="card">

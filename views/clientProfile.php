@@ -5,8 +5,8 @@ require '../init/credentials.php';
 require '../init/functions.php';
 require '../models/database.php';
 require '../models/client.php';
-require '../controllers/clientProfileCtrl.php';
-require '../views/editClientProfile.php';
+require_once '../controllers/clientProfileCtrl.php';
+require_once '../views/editClientProfile.php';
 include '../utilities/header.php';
 ?>
 
@@ -23,11 +23,11 @@ include '../utilities/header.php';
 <?php if(isAdmin()) { ?>
     <a href="clientList.php"><button name="liste" class="btn btn-success rounded-pill">Liste Client</button></a>
     <?php } ?>
-    <h3 class="text-center p-2" id="idTitle">Votre profil Client</h3>
+    <h3 class="text-center p-2" id="idTitle">Profil Client</h3>
     <div class="row" id="editClientProfile">
         <form method="POST" action="">         
             <div class="mt-4">
-                <span class="identifyProfile">Votre identifiant </span>
+                <span class="identifyProfile">Identifiant </span>
             </div>
             <div class="mt-4">
                 <div class="form-group row">
