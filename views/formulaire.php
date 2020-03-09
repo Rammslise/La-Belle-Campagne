@@ -16,6 +16,7 @@ include '../utilities/header.php';
         <?= $message ?>
     </div>
 <?php } ?>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md text-center">
@@ -115,7 +116,7 @@ include '../utilities/header.php';
                         <div class="form-group row">
                             <label for="mail" class="col-md-6 col-form-label">Email*</label>
                             <div class="col-md-10">
-                                <input type="email" class="form-control" id="mailForm" placeholder="adresse@example.com" value="" />
+                                <input type="email" class="form-control" id="mailForm" placeholder="adresse@example.com" value="<?= isset($producer->mail) ? $producer->mail : ''; ?>" />
                                 <small class="text-danger">         
                                     <?php
                                     if (isset($producer->formErrors['mail'])) {
@@ -181,28 +182,27 @@ include '../utilities/header.php';
                         </div>
                         <!-- Nom de l'exploitation agricole -->
                         <div class="form-group row">
-                            <label for="nameCompany"class="col-md-6 col-form-label" >Nom de votre exploitation*</label>
+                            <label for="companyName"class="col-md-6 col-form-label" >Nom de votre exploitation*</label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control" id="nameCompany" name="nameCompany" value="" />
+                                <input type="text" class="form-control" id="companyName" name="companyName" value="<?= isset($producer->companyName) ? $producer->companyName : ''; ?>"/>
                                 <small class="text-danger">         
                                     <?php
-                                    if (isset($producer->formErrors['nameCompany'])) {
-                                        echo $producer->formErrors['nameCompany'];
+                                    if (isset($producer->formErrors['companyName'])) {
+                                        echo $producer->formErrors['companyName'];
                                     }
                                     ?>
                                 </small>
                             </div>
                         </div>
-                        <!-- Adresse de l'exploitation -->
+                        <!-- Lieu de l'exploitation -->
                         <div class="form-group row">                    
-                            <label for="address" class="col-md-6 col-form-label" >Adresse*</label>         
+                            <label for="city" class="col-md-6 col-form-label" >Lieu*</label>         
                             <div class="col-md-10">
-                                <textarea  id="address" name ="address" rows="4" cols="38" >
-                                </textarea>
+                                <input  type="text" id="city" name ="city" />
                                 <small class="text-danger">         
                                     <?php
-                                    if (isset($producer->formErrors['address'])) {
-                                        echo $producer->formErrors['address'];
+                                    if (isset($producer->formErrors['city'])) {
+                                        echo $producer->formErrors['city'];
                                     }
                                     ?>
                                 </small>
@@ -210,14 +210,14 @@ include '../utilities/header.php';
                         </div>
                         <!-- Insertion du logo-->
                         <div class="form-group row">
-                            <div class="col-10">
-                                <label for="picture" class="col-form-label">Image*</label>
-                                <input type="file" class="form-control" id="picture" name="picture" />
-                                <small id="fileHelp" class="form-text text-muted">Format accepté, PNG, JPG, JPEG.</small>
+                            <div class="col-md-10">
+                                <label for="fileUrl" class="col-form-label">Image*</label>
+                                <input type="file" class="form-control" id="fileUrl" name="fileUrl" />
+                                <small class="form-text text-muted">Formats acceptés, PNG, JPG, JPEG.</small>
                                 <small class="text-danger">         
                                     <?php
-                                    if (isset($producer->formErrors['picture'])) {
-                                        echo $producer->formErrors['picture'];
+                                    if (isset($producer->formErrors['fileUrl'])) {
+                                        echo $producer->formErrors['fileUrl'];
                                     }
                                     ?>
                                 </small>

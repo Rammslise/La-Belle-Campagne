@@ -9,7 +9,6 @@ class Client extends Database {
     public $password;
     public $confirmPassword;
     public $id_7ie1z_roles;
-    
     // Initialisation du tableau d'erreurs
     public $formErrors = array();
 
@@ -103,16 +102,15 @@ class Client extends Database {
      */
 
     public function ClientProfileById() {
-        $results = $this->db->prepare('SELECT  `id`,
+        try {
+            $results = $this->db->prepare('SELECT  `id`,
                                                                               `mail`,            
                                                                               `password`, 
                                                                               `pseudo`,    
                                                                               `id_7ie1z_roles` 
                                                                FROM `7ie1z_clients`
                                                                WHERE `id`= :id');
-        $results->bindValue(':id', $this->id, PDO::PARAM_INT);
-
-        try {
+            $results->bindValue(':id', $this->id, PDO::PARAM_INT);
             $results->execute();
             return $results->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
@@ -157,19 +155,19 @@ class Client extends Database {
             echo 'Connexion echoué : ' . $e->getMessage();
         }
     }
-    
-     /**
+
+    /**
      * méthode permettant de récupérer la liste de tous les clients
      * @return array
      */
     public function getClientList($limit, $offset) {
-           try {
-        $results = $this->db->prepare('SELECT `id`,`pseudo`,`mail`, `id_7ie1z_roles`
+        try {
+            $results = $this->db->prepare('SELECT `id`,`pseudo`,`mail`, `id_7ie1z_roles`
                                                                FROM `7ie1z_clients`
                                                                LIMIT :limit OFFSET :offset');
-        $results->bindValue(':limit', $limit, PDO::PARAM_INT);
-        $results->bindValue(':offset', $offset, PDO::PARAM_INT);   
-        $results->execute();
+            $results->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $results->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $results->execute();
             return $results->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             die('erreur : ' . $e->getMessage());
@@ -188,8 +186,8 @@ class Client extends Database {
             die('erreur : ' . $e->getMessage());
         }
     }
-    
-        /**
+
+    /**
      * méthode permettant de trouver un client
      * @return array
      */

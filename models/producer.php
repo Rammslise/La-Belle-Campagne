@@ -10,11 +10,10 @@ class Producer extends Database {
     public $nameCompany;
     public $lastname;
     public $firstname;
-    public $address;
-    public $picture;
+    public $city;
+    public $fileUrl;
     public $description;
     public $id_7ie1z_roles;
-    
     // Initialisation du tableau d'erreurs
     public $formErrors = array();
 
@@ -40,17 +39,17 @@ class Producer extends Database {
         //Éxecution de la requête
         try {
             // Préparation de la requête au serveur de bdd
-            $results = $this->db->prepare("INSERT INTO `7ie1z_producers` (`mail`, `password`, `lastname`, `firstname`, `nameCompany`,  `address`, `picture`, `description`, `id_7ie1z_roles`)
-                                                  VALUES ( :mail, :password, :lastname, :firstname, :nameCompany, :address, :picture, :description, :id_roles)");
-            
+            $results = $this->db->prepare("INSERT INTO `7ie1z_producers` (`mail`, `password`, `lastname`, `firstname`, `nameCompany`, `city`, `fileUrl`, `description`, `id_7ie1z_roles`)
+                                                  VALUES ( :mail, :password, :lastname, :firstname, :nameCompany, :city, :file, :description, :id_roles)");
+
             // association des marqueurs nommées aux véritables informations
             $results->bindValue(':mail', $this->mail, PDO::PARAM_STR);
             $results->bindValue(':password', $this->password, PDO::PARAM_STR);
             $results->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
             $results->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
             $results->bindValue(':nameCompany', $this->nameCompany, PDO::PARAM_STR);
-            $results->bindValue(':address', $this->password, PDO::PARAM_STR);
-            $results->bindValue(':picture', $this->password, PDO::PARAM_STR);
+            $results->bindValue(':city', $this->city, PDO::PARAM_STR);
+            $results->bindValue(':fileUrl', $this->file, PDO::PARAM_STR);
             $results->bindValue(':description', $this->description, PDO::PARAM_STR);
             $results->bindValue(':id_roles', $this->id_7ie1z_roles, PDO::PARAM_INT);
 
@@ -82,6 +81,60 @@ class Producer extends Database {
             }
         } catch (PDOException $e) {
             die('erreur : ' . $e->getMessage());
+        }
+    }
+
+    /*
+     * Méthode permettant  de récupérer le profil Producteur par le mail
+     * @array
+     */
+
+    public function ProducerProfile() {
+        try {
+            $results = $this->db->prepare('SELECT `id`, 
+                                                                                 `mail`, 
+                                                                                 `password`, 
+                                                                                 `lastname`,
+                                                                                 `firstname`,
+                                                                                 `nameCompany`,
+                                                                                 `city`,
+                                                                                 `fileUrl`,
+                                                                                 `description`,
+                                                                                 `id_7ie1z_roles` 
+                                                                   FROM `7ie1z_producers`
+                                                                   WHERE `mail` =:mail');
+            $results->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+            $results->execute();
+            return $results->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            die('erreur : ' . $e->getMessage());
+        }
+    }
+
+    /*
+     * Méthode pour récupérer le profil Producteur par l'id
+     * @array
+     */
+
+    public function ProducerProfileById() {
+        try {
+            $results = $this->db->prepare('SELECT `id`, 
+                                                                             `mail`, 
+                                                                             `password`, 
+                                                                             `lastname`,
+                                                                             `firstname`,
+                                                                             `nameCompany`,
+                                                                             `city`,
+                                                                             `fileUrl`,
+                                                                             `description`,
+                                                                             `id_7ie1z_roles` 
+                                                               FROM `7ie1z_producers`
+                                                               WHERE `id`= :id');
+            $results->bindValue(':id', $this->id, PDO::PARAM_INT);
+            $results->execute();
+            return $results->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            die('Error :' . $e->getMessage());
         }
     }
 

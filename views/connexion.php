@@ -6,7 +6,8 @@ require '../init/functions.php';
 require '../models/database.php';
 require '../models/client.php';
 require '../models/producer.php';
-require_once '../controllers/connexionCtrl.php';
+require_once '../controllers/connexionClientCtrl.php';
+require_once '../controllers/connexionProducerCtrl.php';
 include '../utilities/header.php';
 ?>
 
@@ -55,7 +56,7 @@ include '../utilities/header.php';
                         ?>
                     </small> 
                 </div>
-                <button type="submit" name="submitClient" class="btn btn-success disabled rounded-pill mt-2"><span>Se connecter</span></button>
+                <button type="submit" name="submit" class="btn btn-success disabled rounded-pill mt-2"><span>Se connecter</span></button>
             </div>
         </form>
     </div>

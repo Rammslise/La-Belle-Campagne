@@ -3,25 +3,23 @@
 // Création des instances de classe Producer
 $producer = new Producer();
 
-// Regex MAIL
-define('MAIL_REGEX', '/^[^\W]?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\.[a-zA-Z]{2,4}$/');
-// Regex SOCIÉTÉ et DESCRIPTION
+// Regex SOCIÉTÉ et DESCRIPTION et VILLE
 define('COMPANY_DESCRIPTION_REGEX', '/^[a-zA-Z0-9À-ÿ\' -]+$/');
 // Regex  NOM - PRÉNOM - LIEU
 define('NAME_REGEX', '/^[a-zA-ZÀ-ÿ\' -]+$/');
-// Regex IMAGE
-define('PICTURE_REGEX', '/([^\s]+(\.(?i)(jpg|png|jpeg))$/)');
 
 // Condition pour la partie du formulaire pour le Producteur.
 if (isset($_POST['submitProducer'])) {
 
     // Récupération des données du formulaire du Producteur
     $producer->mail = isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '';
-    $producer->password = isset($_POST['password']) ? $_POST['password'] : '';
-    $producer->confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : '';
-    $producer->nameCompany = isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '';
-    $producer->address = isset($_POST['address']) ? htmlspecialchars($_POST['address']) : '';
-    $producer->picture = isset($_POST['picture']) ? htmlspecialchars($_POST['picture']) : '';
+    $producer->password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+    $producer->confirmPassword = isset($_POST['confirmPassword']) ? htmlspecialchars($_POST['confirmPassword']) : '';
+    $producer->lastname = isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : '';
+    $producer->firstname = isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : '';
+    $producer->nameCompany = isset($_POST['companyName']) ? htmlspecialchars($_POST['companyName']) : '';
+    $producer->city = isset($_POST['city']) ? htmlspecialchars($_POST['city']) : '';
+    $producer->fileUrl = isset($_POST['fileUrl']) ? htmlspecialchars($_POST['fileUrl']) : '';
     $producer->description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
     $producer->id_7ie1z_roles = 3;
 
@@ -50,34 +48,63 @@ if (isset($_POST['submitProducer'])) {
     }
 
     // Validation du NOM DE LA SOCIÉTÉ
-    if (empty($producer->nameCompany)) {
-        $producer->formErrors['nameCompany'] = 'Champs obligatoire';
-    } elseif (!preg_match(COMPANY_DESCRIPTION_REGEX, $producer->mail)) {
-        $producer->formErrors['nameCompany'] = 'Merci de rentrer un nom valide';
+    if (empty($producer->companyName)) {
+        $producer->formErrors['companyName'] = 'Champs obligatoire';
+    } elseif (!preg_match(COMPANY_DESCRIPTION_REGEX, $producer->companyName)) {
+        $producer->formErrors['companyName'] = 'Merci de rentrer un nom valide';
     }
 
-    // Validation de ADRESSE
-    if (empty($producer->address)) {
-        $producer->formErrors['address'] = 'Champs obligatoire';
-    } elseif (!preg_match(NAME_REGEX, $producer->address)) {
-        $producer->formErrors['address'] = 'Merci de rentrer un nom valide';
+    // Validation du NOM DE FAMILLE
+    if (empty($producer->lastname)) {
+        $producer->formErrors['lastname'] = 'Champs obligatoire';
+    } elseif (!preg_match(NAME_REGEX, $producer->lastname)) {
+        $producer->formErrors['lastname'] = 'Merci de rentrer un nom valide';
     }
 
-    // Validation LOGO
-    if (empty($producer->picture)) {
-        $producer->formErrors['picture'] = 'Champs obligatoire';
-    } elseif (!preg_match(PICTURE_REGEX, $producer->picture)) {
-        $producer->formErrors['picture'] = 'Format non accepté';
-    }
-    
-    //Validation DESCRIPTION
-    if (empty($producer->description)) {
-        $producer->formErrors['description'] = 'Champs obligatoire';
-    } elseif (!preg_match(COMPANY_DESCRIPTION_REGEX, $producer->description)){
-        $producer->formErrors['description'] = 'Caractères spéciaux non acceptés';
+    // Validation du PRÉNOM
+    if (empty($producer->firstname)) {
+        $producer->formErrors['firstname'] = 'Champs obligatoire';
+    } elseif (!preg_match(NAME_REGEX, $producer->firstname)) {
+        $producer->formErrors['firstname'] = 'Merci de rentrer un prénom valide';
     }
 
-// Si toutes les conditions sont remplies et que le tableau d'erreurs est vide
+    // Validation de VLLE
+    if (empty($producer->city)) {
+        $producer->formErrors['city'] = 'Champs obligatoire';
+    } elseif (!preg_match(COMPANY_DESCRIPTION_REGEX, $producer->city)) {
+        $producer->formErrors['city'] = 'Merci de rentrer un nom correct';
+    } elseif (strlen($producer->city) > 100) {
+        $producer->formErrors['city'] = 'Caractères maximums autorisés';
+    }
+
+    // Validation du FICHIER
+    if (isset($_FILES['fileUrl'])) {
+        $infoFile = pathinfo($_FILES['fileUrl']['name']);
+//        $extensionUpload = $infoFile['extension'];
+        $extensionSize = 4000000;
+
+        if (empty($_FILE['fileUrl'])) {
+            $producer->formErrors['fileUrl'] = 'Champs obligatoire';
+        }
+        if ($_FILES['fileUrl'] != $extensionSize) {
+            'Format non accepté';
+        }
+
+        if ($extensionUpload == 'png' || 'jpg' || 'jpeg' || 'PNG' || 'JPG' || 'JPEG') {
+            'Votre fichier a été correctement téléchargé';
+        } else {
+            'Merci de mettre votre fichier au bon format';
+        }
+        
+        //Validation DESCRIPTION
+        if (empty($producer->description)) {
+            $producer->formErrors['description'] = 'Champs obligatoire';
+        } elseif (!preg_match(COMPANY_DESCRIPTION_REGEX, $producer->description)) {
+            $producer->formErrors['description'] = 'Caractères spéciaux non acceptés';
+        }
+    }
+
+    // Si toutes les conditions sont remplies et que le tableau d'erreurs est vide
     if (empty($producer->formErrors)) {
 
         // Hashage du MDP pour une sécurité supplémentaire +  //Password_default = password_bcrypt (b = blowfish)

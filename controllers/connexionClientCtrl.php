@@ -10,7 +10,7 @@ if (isset($_SESSION['message'])) {
 // Regex MAIL
 define('MAIL_REGEX', '/^[^\W]?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\.[a-zA-Z]{2,4}$/');
 
-if (isset($_POST['submitClient'])) {
+if (isset($_POST['submit'])) {
 
     // Récupération des données du formulaire du Client
     $client->mail = isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '';
