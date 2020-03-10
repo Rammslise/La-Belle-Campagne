@@ -6,7 +6,7 @@
         <!-- coder l’ensemble des caractères du « répertoire universel de caractères codés -->
         <meta charset="utf-8" />
         <!-- Définit les dimensions d'une page web-->
-        <meta name= "viewport" content="width=device-width" initial-scale="1" />
+        <meta name= "viewport" content="width=device-width, initial-scale=1.0" />
         <!-- Définit la relation entre le document courant et une ressource externe-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora&display=swap" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
@@ -28,8 +28,9 @@
             </div>  
             <div class="col-md-4 mt-4">              
                 <ul id="linkHeader">
-                    <?php if (isAdmin() || isClient() || isProducer()) { ?>
-                        <a href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?></a> | 
+                    <?php if (isProducer()) { ?><a href="../views/producerProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour et bienvenue'; ?></a> | 
+                        <a href="../views/deconnexion.php">Déconnexion</a> |
+                    <?php } elseif (isClient() || isAdmin()) { ?><a href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?></a> | 
                         <a href="../views/deconnexion.php">Déconnexion</a> |
                     <?php } else { ?>                                                                                                   
                         <li><a href="../views/connexion.php">Inscription</a>|</li>

@@ -88,7 +88,7 @@ include '../utilities/header.php';
             </div>
             <button type="submit" name="submit" class="btn btn-success rounded-pill  mt-2 mr-1"><span>Modifier</span></button></a>                                                                     
         </form>
-        <button name="delete" class="btn btn-danger rounded-pill mt-2" data-toggle="modal" data-target="#modal-<?= $client->id ?>"><span>Supprimer</span></button></a>     
+        <button name="delete" class="btn btn-danger rounded-pill mt-2" data-toggle="modal" data-target="#modal-<?= $client->id ?>"><span>Supprimer</span></button>     
         <a href="deconnexion.php"><button class="btn rounded-pill mt-2 "><i class="fas fa-power-off"></i></button></a>    
     </div>
 </div>

@@ -60,14 +60,14 @@ if (isset($_POST['submit'])) {
             header('Location: ../index.php?id=' . $profile->id);
             exit();
         } else {
-            $message = 'Impossible de modifier le patient';
+            $message = 'Impossible de modifier votre profil';
         }
     }
 } elseif (isset($_GET['id']) && $_GET['id'] > 0) {
 
     $client->id = htmlspecialchars($_GET['id']);
 
-    //récupération du profil Patient
+    //récupération du profil Client
     $profile = $client->ClientProfileById();
 
     if (!is_object($profile)) {

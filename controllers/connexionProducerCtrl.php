@@ -26,14 +26,13 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($producer->formErrors)) {
-        $producerFound = $producer->ProducerProfile();
+        $producerFound = $producer->producerProfile();
 
         if (is_object($producerFound) && password_verify($producer->password, $producerFound->password)) {
 
             // Mise en session des données qui seront utiles
             $_SESSION['user_id'] = $producerFound->id;
             $_SESSION['user_role'] = $producerFound->id_7ie1z_roles;
-            $_SESSION['pseudo'] = $producerFound->pseudo;
 
             // Redirection de l'utilisateur vers la page d'accueil      
             header('Location: ../index.php');

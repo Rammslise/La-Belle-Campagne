@@ -104,10 +104,10 @@ class Client extends Database {
     public function ClientProfileById() {
         try {
             $results = $this->db->prepare('SELECT  `id`,
-                                                                              `mail`,            
-                                                                              `password`, 
-                                                                              `pseudo`,    
-                                                                              `id_7ie1z_roles` 
+                                                                                  `mail`,            
+                                                                                  `password`, 
+                                                                                  `pseudo`,    
+                                                                                  `id_7ie1z_roles` 
                                                                FROM `7ie1z_clients`
                                                                WHERE `id`= :id');
             $results->bindValue(':id', $this->id, PDO::PARAM_INT);

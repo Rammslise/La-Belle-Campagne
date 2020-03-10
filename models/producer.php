@@ -7,11 +7,11 @@ class Producer extends Database {
     public $mail;
     public $password;
     public $confirmPassword;
-    public $nameCompany;
+    public $companyName;
     public $lastname;
     public $firstname;
     public $city;
-    public $fileUrl;
+    public $profilPicture;
     public $description;
     public $id_7ie1z_roles;
     // Initialisation du tableau d'erreurs
@@ -39,17 +39,17 @@ class Producer extends Database {
         //Éxecution de la requête
         try {
             // Préparation de la requête au serveur de bdd
-            $results = $this->db->prepare("INSERT INTO `7ie1z_producers` (`mail`, `password`, `lastname`, `firstname`, `nameCompany`, `city`, `fileUrl`, `description`, `id_7ie1z_roles`)
-                                                  VALUES ( :mail, :password, :lastname, :firstname, :nameCompany, :city, :file, :description, :id_roles)");
+            $results = $this->db->prepare("INSERT INTO `7ie1z_producers` (`mail`, `password`, `lastname`, `firstname`, `companyName`, `city`, `profilPicture`, `description`, `id_7ie1z_roles`)
+                                                  VALUES ( :mail, :password, :lastname, :firstname, :companyName, :city, :profilPicture, :description, :id_roles)");
 
             // association des marqueurs nommées aux véritables informations
             $results->bindValue(':mail', $this->mail, PDO::PARAM_STR);
             $results->bindValue(':password', $this->password, PDO::PARAM_STR);
             $results->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
             $results->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
-            $results->bindValue(':nameCompany', $this->nameCompany, PDO::PARAM_STR);
+            $results->bindValue(':companyName', $this->companyName, PDO::PARAM_STR);
             $results->bindValue(':city', $this->city, PDO::PARAM_STR);
-            $results->bindValue(':fileUrl', $this->file, PDO::PARAM_STR);
+            $results->bindColumn(':profilPicture', $this->profilPicture, PDO::PARAM_STR);
             $results->bindValue(':description', $this->description, PDO::PARAM_STR);
             $results->bindValue(':id_roles', $this->id_7ie1z_roles, PDO::PARAM_INT);
 
@@ -89,16 +89,16 @@ class Producer extends Database {
      * @array
      */
 
-    public function ProducerProfile() {
+    public function producerProfile() {
         try {
             $results = $this->db->prepare('SELECT `id`, 
                                                                                  `mail`, 
                                                                                  `password`, 
                                                                                  `lastname`,
                                                                                  `firstname`,
-                                                                                 `nameCompany`,
+                                                                                 `companyName`,
                                                                                  `city`,
-                                                                                 `fileUrl`,
+                                                                                 `profilPicture`,
                                                                                  `description`,
                                                                                  `id_7ie1z_roles` 
                                                                    FROM `7ie1z_producers`
@@ -116,18 +116,18 @@ class Producer extends Database {
      * @array
      */
 
-    public function ProducerProfileById() {
+    public function producerProfileById() {
         try {
             $results = $this->db->prepare('SELECT `id`, 
-                                                                             `mail`, 
-                                                                             `password`, 
-                                                                             `lastname`,
-                                                                             `firstname`,
-                                                                             `nameCompany`,
-                                                                             `city`,
-                                                                             `fileUrl`,
-                                                                             `description`,
-                                                                             `id_7ie1z_roles` 
+                                                                                 `mail`, 
+                                                                                 `password`, 
+                                                                                 `lastname`,
+                                                                                 `firstname`,
+                                                                                 `companyName`,
+                                                                                 `city`,
+                                                                                 `profilPicture`,
+                                                                                 `description`,
+                                                                                 `id_7ie1z_roles` 
                                                                FROM `7ie1z_producers`
                                                                WHERE `id`= :id');
             $results->bindValue(':id', $this->id, PDO::PARAM_INT);
@@ -135,6 +135,40 @@ class Producer extends Database {
             return $results->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             die('Error :' . $e->getMessage());
+        }
+    }
+
+    /*
+     * Méthode permettant au Producteur de modifier ses données
+     * @array
+     */
+
+    public function editProducerProfile() {
+        try {
+            $results = $this->db->prepare('UPDATE `7ie1z_producers` 
+                               SET        `mail` = :mail, 
+                                             `password` = :password, 
+                                             `lastname` = :lastname, 
+                                             `firstname` = :firstname,
+                                             `companyName` = :companyName,
+                                             `city` = :city,    
+                                             `profilPicture` = :profilPicture,
+                                             `description` = :description,    
+                                             `id_7ie1z_roles` = :id_roles
+                               WHERE `id` = :id');
+            $results->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+            $results->bindValue(':password', $this->password, PDO::PARAM_STR);
+            $results->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
+            $results->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
+            $results->bindValue(':companyName', $this->companyName, PDO::PARAM_STR);
+            $results->bindValue(':city', $this->city, PDO::PARAM_STR);
+            $results->bindColumn(':profilPicture', $this->profilPicture, PDO::PARAM_STR);
+            $results->bindValue(':description', $this->description, PDO::PARAM_STR);
+            $results->bindValue(':id_roles', $this->id_7ie1z_roles, PDO::PARAM_INT);
+            $results->bindValue(':id', $this->id, PDO::PARAM_INT);
+            return $results->execute();
+        } catch (PDOException $e) {
+            echo 'Connexion échouée : ' . $e->getMessage();
         }
     }
 

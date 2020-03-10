@@ -9,7 +9,14 @@ header{
 }
 
 a{
-    
+    text-decoration: none;
+    overflow: hidden;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #8c4d1e;
 }
 
 ul {
@@ -48,17 +55,25 @@ body{
     background-repeat: no-repeat;
     background-attachment:fixed;
     background-size: cover;
+}
 
+.home{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .carousel img{
-    height:300px;
+    height:350px;
     width: 400px;   
 }
 
-#calendar, #cowPhoto, #homeCarousel{
-    height:350px;
+#calendar, #cowPhoto{
+    height: 350px;
     width: 450px;   
-    border: 5px solid;
+}
+
+#cowPhoto{
+    transform: scale(1.1);
 }
 
 #accountList{
@@ -92,11 +107,23 @@ span{
     font-weight: bold;
 }
 
+#editProducerProfile{
+    display: flex;
+    justify-content: space-around;
+}
+
+#ivyPicture{
+    height: 500px;
+    width: 200px;
+}
+
 /*Partie Hover sur la photo avec la vache */
 .container{
     float: left;
     width: 100%;
 }
+
+
 @media screen and (max-width: 640px){
     .container{
         display: block;
@@ -109,16 +136,22 @@ span{
         width: 33.33333%;
     }
 }
-
+@media screen and (max-width: 900px){
+    .home{
+        display: flex;
+        flex-direction: column;
+    }
+}
 .container .title{
     color: #1a1a1a;
     text-align: center;
     margin-bottom: 10px;
+    font-weight: 900;
 }
 
 .content {
     position: relative;
-    width: 90%;
+    width: 100%;
     max-width: 400px;
     margin: auto;
     overflow: hidden;
@@ -162,6 +195,7 @@ span{
     -webkit-transition: all 0.3s ease-in-out 0s;
     -moz-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
+    font-weight: 900;
 }
 
 .content:hover .content-details{

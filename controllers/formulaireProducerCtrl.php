@@ -10,16 +10,16 @@ define('NAME_REGEX', '/^[a-zA-ZÀ-ÿ\' -]+$/');
 
 // Condition pour la partie du formulaire pour le Producteur.
 if (isset($_POST['submitProducer'])) {
-
+    
     // Récupération des données du formulaire du Producteur
     $producer->mail = isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '';
     $producer->password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
     $producer->confirmPassword = isset($_POST['confirmPassword']) ? htmlspecialchars($_POST['confirmPassword']) : '';
     $producer->lastname = isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : '';
     $producer->firstname = isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : '';
-    $producer->nameCompany = isset($_POST['companyName']) ? htmlspecialchars($_POST['companyName']) : '';
+    $producer->companyName = isset($_POST['companyName']) ? htmlspecialchars($_POST['companyName']) : '';
     $producer->city = isset($_POST['city']) ? htmlspecialchars($_POST['city']) : '';
-    $producer->fileUrl = isset($_POST['fileUrl']) ? htmlspecialchars($_POST['fileUrl']) : '';
+    $imageArray = isset($_FILES['profilPicture']) ? $_FILES['profilPicture'] : array();
     $producer->description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
     $producer->id_7ie1z_roles = 3;
 
@@ -59,15 +59,15 @@ if (isset($_POST['submitProducer'])) {
         $producer->formErrors['lastname'] = 'Champs obligatoire';
     } elseif (!preg_match(NAME_REGEX, $producer->lastname)) {
         $producer->formErrors['lastname'] = 'Merci de rentrer un nom valide';
-    }
-
+    } 
+    
     // Validation du PRÉNOM
     if (empty($producer->firstname)) {
         $producer->formErrors['firstname'] = 'Champs obligatoire';
     } elseif (!preg_match(NAME_REGEX, $producer->firstname)) {
         $producer->formErrors['firstname'] = 'Merci de rentrer un prénom valide';
-    }
-
+    } 
+    
     // Validation de VLLE
     if (empty($producer->city)) {
         $producer->formErrors['city'] = 'Champs obligatoire';
@@ -77,35 +77,33 @@ if (isset($_POST['submitProducer'])) {
         $producer->formErrors['city'] = 'Caractères maximums autorisés';
     }
 
-    // Validation du FICHIER
-    if (isset($_FILES['fileUrl'])) {
-        $infoFile = pathinfo($_FILES['fileUrl']['name']);
-//        $extensionUpload = $infoFile['extension'];
-        $extensionSize = 4000000;
+    // Validation de IMAGE
+    if (empty($imageArray['name'])) {
+        $producer->formErrors['profilPicture'] = 'Champs obligatoire';
+    } else {
+        // Analyse des données du fichier
+        $fileName = strtolower(basename($imageArray['name']));
+        $fileExtension = strrchr($fileName, '.');
+        $fileSource = $imageArray['tmp_name'];
+        $fileSize = filesize($fileSource);
+    }
 
-        if (empty($_FILE['fileUrl'])) {
-            $producer->formErrors['fileUrl'] = 'Champs obligatoire';
-        }
-        if ($_FILES['fileUrl'] != $extensionSize) {
-            'Format non accepté';
-        }
+    if ($fileSize > 1000000) {
+        $producer->formErrors['profilPicture'] = 'Le fichier ne doit pas dépasser 1Mo';
+    } elseif ($fileExtension != '.png' && $fileExtension != '.jpg' && $fileExtension != '.jpeg' && $fileExtension != '.gif') {
+        $producer->formErrors['profilPicture'] = 'Extension incorrecte';
+    }
 
-        if ($extensionUpload == 'png' || 'jpg' || 'jpeg' || 'PNG' || 'JPG' || 'JPEG') {
-            'Votre fichier a été correctement téléchargé';
-        } else {
-            'Merci de mettre votre fichier au bon format';
-        }
-        
-        //Validation DESCRIPTION
-        if (empty($producer->description)) {
-            $producer->formErrors['description'] = 'Champs obligatoire';
-        } elseif (!preg_match(COMPANY_DESCRIPTION_REGEX, $producer->description)) {
-            $producer->formErrors['description'] = 'Caractères spéciaux non acceptés';
-        }
+    //Validation DESCRIPTION
+    if (empty($producer->description)) {
+        $producer->formErrors['description'] = 'Champs obligatoire';
     }
 
     // Si toutes les conditions sont remplies et que le tableau d'erreurs est vide
     if (empty($producer->formErrors)) {
+
+        // Upload du fichier img sur le server
+        move_uploaded_file($fileSource, '../upload/' .$fileName);
 
         // Hashage du MDP pour une sécurité supplémentaire +  //Password_default = password_bcrypt (b = blowfish)
         $producer->password = password_hash($producer->password, PASSWORD_DEFAULT);

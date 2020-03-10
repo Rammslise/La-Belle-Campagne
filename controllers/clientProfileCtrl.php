@@ -7,7 +7,8 @@ if (isset($_SESSION['message'])) {
     unset($_SESSION['message']);
 }
 
-if (isset($_GET['id']) && $_GET['id'] > 0) {
+// Permet de ne pas permettre àl'utilisateur de changer l'id du profil Client.
+if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_SESSION['user_id']) && isset ($_SESSION['user_role']) && isset($_SESSION['pseudo']) && $_GET['id'] == $_SESSION['user_id']) {
 
     $client->id = htmlspecialchars($_GET['id']);
 
@@ -15,11 +16,11 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
     $clientProfile = $client->ClientProfileById();
 
     if (!is_object($clientProfile)) {
-        header('Location: clientList.php');
+        header('Location: ../views/clientProfile.php');
         exit();
     }
 } else {
-    header('Location: clientList.php');
+    header('Location: ../index.php');
     exit();
 }
 ?>

@@ -108,7 +108,7 @@ include '../utilities/header.php';
                     <button type="submit" name="submitClient" class="btn btn-success rounded-pill"><span>Valider</span></button>
                 </form>
             </div>
-            <!-- Formulaire Procuteur-->
+            <!-- Formulaire Producteur-->
             <div class="tab-pane fade" id="producer" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="tab-pane fade show active" id="client" role="tabpanel" aria-labelledby="home-tab">   
                     <form method="POST" action="" id="formProducer" enctype="multipart/form-data">
@@ -116,7 +116,7 @@ include '../utilities/header.php';
                         <div class="form-group row">
                             <label for="mail" class="col-md-6 col-form-label">Email*</label>
                             <div class="col-md-10">
-                                <input type="email" class="form-control" id="mailForm" placeholder="adresse@example.com" value="<?= isset($producer->mail) ? $producer->mail : ''; ?>" />
+                                <input type="email" name="mail" class="form-control" id="mail" placeholder="adresse@example.com" value="<?= isset($producer->mail) ? $producer->mail : ''; ?>" />
                                 <small class="text-danger">         
                                     <?php
                                     if (isset($producer->formErrors['mail'])) {
@@ -130,7 +130,7 @@ include '../utilities/header.php';
                         <div class="form-group row">
                             <label for="password" class="col-md-6 col-form-label">Mot de passe*</label>
                             <div class="col-md-10">
-                                <input type="password" class="form-control" id="password" />
+                                <input type="password" name="password" class="form-control" id="password" />
                                 <small class="text-danger">         
                                     <?php
                                     if (isset($producer->formErrors['password'])) {
@@ -144,7 +144,7 @@ include '../utilities/header.php';
                         <div class="form-group row">
                             <label for="confirmPassword" class="col-md-6 col-form-label">Confirmation*</label>
                             <div class="col-md-10">
-                                <input type="password" class="form-control" id="confirmPassword"  />
+                                <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"  />
                                 <small class="text-danger">         
                                     <?php
                                     if (isset($producer->formErrors['confirmPassword'])) {
@@ -211,13 +211,13 @@ include '../utilities/header.php';
                         <!-- Insertion du logo-->
                         <div class="form-group row">
                             <div class="col-md-10">
-                                <label for="fileUrl" class="col-form-label">Image*</label>
-                                <input type="file" class="form-control" id="fileUrl" name="fileUrl" />
-                                <small class="form-text text-muted">Formats acceptés, PNG, JPG, JPEG.</small>
+                                <label for="profilPicture" class="col-form-label">Image*</label>
+                                <input type="file" class="form-control" id="profilPicture" name="profilPicture" />
+                                <small class="form-text text-muted">Formats acceptés, png, jpg, jpeg, gif.</small>
                                 <small class="text-danger">         
                                     <?php
-                                    if (isset($producer->formErrors['fileUrl'])) {
-                                        echo $producer->formErrors['fileUrl'];
+                                    if (isset($producer->formErrors['profilPicture'])) {
+                                        echo $producer->formErrors['profilPicture'];
                                     }
                                     ?>
                                 </small>
@@ -225,10 +225,9 @@ include '../utilities/header.php';
                         </div>
                         <!-- Description de l'exploitation-->
                         <div class="form-group row">                    
-                            <label for="descriptionProducer" class="col-md-6 col-form-label" >Description*</label>         
+                            <label for="description" class="col-md-6 col-form-label" >Description*</label>         
                             <div class="col-md-10">
-                                <textarea  id="descriptionProducer" name="descriptionProducer" rows="4" cols="38" placeholder="Présentez-vous et votre exploitation. Décrivez les produits que vous vendez."> 
-                                </textarea>
+                                <textarea  id="description" name="description" rows="4" cols="38" placeholder="Présentez-vous et votre exploitation. Décrivez les produits que vous vendez."></textarea>
                                 <small class="text-danger">         
                                     <?php
                                     if (isset($producer->formErrors['description'])) {
