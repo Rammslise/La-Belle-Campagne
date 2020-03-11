@@ -86,7 +86,7 @@ include '../utilities/header.php';
                 </div>
             </form>
         </div>
-        <img src="../assets/img/body/lierre1.png" id="ivyPicture" class="img-responsive" alt="ivy" />
+        <img src="../assets/img/body/vegetableStrip.png" id="vegetableStrip" class="img-responsive" alt="vegetableStrip" />
         <div class="col-md-5">
             <form method="POST" action="" enctype="multipart/form-data">
                 <div class="mt-4">

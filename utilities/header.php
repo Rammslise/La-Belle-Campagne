@@ -28,9 +28,44 @@
             </div>  
             <div class="col-md-4 mt-4">              
                 <ul id="linkHeader">
-                    <?php if (isProducer()) { ?><a href="../views/producerProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour et bienvenue'; ?></a> | 
+                    <?php if (isProducer()) { ?>
+                        <div class="dropdown">
+                            <a class=" dropdown-toggle" type="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?= 'Bonjour et bienvenue'; ?>
+                            </a>  |
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="../views/producerProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>">Votre compte</a>
+                                <a class="dropdown-item" href="../views/createProduct.php">Ajouter un article</a>
+                                <a class="dropdown-item" href="../views/producerProduct.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>">Vos produits</a>
+                                <a class="dropdown-item" href="">Nous contacter</a>
+                            </div>
+                        </div>
                         <a href="../views/deconnexion.php">Déconnexion</a> |
-                    <?php } elseif (isClient() || isAdmin()) { ?><a href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>"><?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?></a> | 
+                    <?php } elseif (isClient()) { ?>
+                        <div class="dropdown">
+                            <a class=" dropdown-toggle" type="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?>
+                            </a> |
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>">Votre compte</a>
+                                <a class="dropdown-item" href="">Vos commandes</a>
+                                <a class="dropdown-item" href="">Nous contacter</a>
+                            </div>                           
+                        </div>
+                        <a href="../views/deconnexion.php">Déconnexion</a> |
+                    <?php } elseif (isAdmin()) { ?>
+                        <div class="dropdown">
+                            <a class=" dropdown-toggle" type="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?= 'Bonjour ' . htmlspecialchars($_SESSION['pseudo']); ?>
+                            </a> |
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="../views/clientProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>">Votre compte</a>
+                                <a class="dropdown-item" href="">Vos commandes</a>
+                                <a class="dropdown-item" href="../views/clientList.php">Liste des clients</a>
+                                <a class="dropdown-item" href="">Liste des producteurs</a>
+                                <a class="dropdown-item" href="">Liste des articles</a>
+                            </div>                           
+                        </div>
                         <a href="../views/deconnexion.php">Déconnexion</a> |
                     <?php } else { ?>                                                                                                   
                         <li><a href="../views/connexion.php">Inscription</a>|</li>
@@ -45,4 +80,5 @@
         </div>            
     </div>  
 </header>
+
 <?php include 'navbar.php'; ?>

@@ -112,9 +112,8 @@ span{
     justify-content: space-around;
 }
 
-#ivyPicture{
-    height: 500px;
-    width: 200px;
+#vegetableStrip{
+    width: 120px;
 }
 
 /*Partie Hover sur la photo avec la vache */
@@ -129,17 +128,24 @@ span{
         display: block;
         width: 100%;
     }
+    #vegetableStrip{
+        display: none;
+    }
 }
 
 @media screen and (min-width: 900px){
     .container{
         width: 33.33333%;
     }
+    
 }
 @media screen and (max-width: 900px){
     .home{
         display: flex;
         flex-direction: column;
+    }
+    #vegetableStrip{
+        display: none;
     }
 }
 .container .title{

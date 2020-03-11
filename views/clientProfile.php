@@ -9,7 +9,6 @@ require_once '../controllers/clientProfileCtrl.php';
 require_once '../views/editClientProfile.php';
 include '../utilities/header.php';
 ?>
-
 <!--Message  -->
 <?php if (isset($message)) { ?>
     <div class="alert alert-danger mb-3" role="alert">
@@ -20,9 +19,6 @@ include '../utilities/header.php';
     <!-- Récupération des valeurs id et rôles par des liens cachés -->
     <input type="hidden" name="id" value="<?= $clientProfile->id ?>" />
     <input type="hidden" name="roles" value="<?= $clientProfile->id_7ie1z_roles ?>" />
-<?php if(isAdmin()) { ?>
-    <a href="clientList.php"><button name="liste" class="btn btn-success rounded-pill">Liste Client</button></a>
-    <?php } ?>
     <h3 class="text-center p-2" id="idTitle">Profil Client</h3>
     <div class="row" id="editClientProfile">
         <form method="POST" action="">         
@@ -86,10 +82,12 @@ include '../utilities/header.php';
                     </div>
                 </div>
             </div>
-            <button type="submit" name="submit" class="btn btn-success rounded-pill  mt-2 mr-1"><span>Modifier</span></button></a>                                                                     
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <button type="submit" name="submit" class="btn btn-success rounded-pill  mt-2 mr-1"><span>Modifier</span></button>                                                                                               
+                <button name="delete" class="btn btn-danger rounded-pill mt-2" data-toggle="modal" data-target="#modal-<?= $producer->id ?>"><span>Supprimer</span></button>
+                <a href="deconnexion.php"><button class="btn rounded-pill mt-2 "><i class="fas fa-power-off"></i></button></a>              
+            </div>                                                       
         </form>
-        <button name="delete" class="btn btn-danger rounded-pill mt-2" data-toggle="modal" data-target="#modal-<?= $client->id ?>"><span>Supprimer</span></button>     
-        <a href="deconnexion.php"><button class="btn rounded-pill mt-2 "><i class="fas fa-power-off"></i></button></a>    
     </div>
 </div>
 <?php include '../utilities/footer.php'; ?>

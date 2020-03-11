@@ -9,23 +9,23 @@
         <ul class="navbar-nav">
             <img src="../assets/img/navbar/cabbage.png" class="d-inline-block align-top" width="35" height="35" />
             <li class="nav-item active">              
-                <a class="nav-link" href="../views/vegetables.php">Légumes <span class="sr-only">(current)</span>|</a>
+                <a class="nav-link" href="">Légumes <span class="sr-only">(current)</span>|</a>
             </li>
             <img src="../assets/img/navbar/raspberry.png" class="d-inline-block align-top" width="30" height="32" />
             <li class="nav-item">
-                <a class="nav-link" href="../views/fruits.php">Fruits |</a> 
+                <a class="nav-link" href="">Fruits |</a> 
             </li>
             <img src="../assets/img/navbar/meat.png" class="d-inline-block align-top" width="30" height="35" />
             <li class="nav-item">
-                <a class="nav-link" href="../views/meats.php">Viandes |</a>
+                <a class="nav-link" href="">Viandes |</a>
             </li>
             <img src="../assets/img/navbar/cheese.png" class="d-inline-block align-top" width="30" height="32" />
             <li class="nav-item">
-                <a class="nav-link" href="../views/creamery.php">Crémerie |</a>
+                <a class="nav-link" href="">Crémerie |</a>
             </li>
             <img src="../assets/img/navbar/beeswax.png" class="d-inline-block" width="35" height="35" />
             <li class="nav-item">
-                <a class="nav-link" href="../views/creamery.php">Épicerie |</a>
+                <a class="nav-link" href="">Épicerie |</a>
             </li>
         </ul>
         <form class="form-inline">

@@ -49,7 +49,7 @@ class Producer extends Database {
             $results->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
             $results->bindValue(':companyName', $this->companyName, PDO::PARAM_STR);
             $results->bindValue(':city', $this->city, PDO::PARAM_STR);
-            $results->bindColumn(':profilPicture', $this->profilPicture, PDO::PARAM_STR);
+            $results->bindValue(':profilPicture', $this->profilPicture, PDO::PARAM_STR);
             $results->bindValue(':description', $this->description, PDO::PARAM_STR);
             $results->bindValue(':id_roles', $this->id_7ie1z_roles, PDO::PARAM_INT);
 
