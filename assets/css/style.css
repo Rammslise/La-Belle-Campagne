@@ -116,12 +116,10 @@ span{
     width: 120px;
 }
 
-/*Partie Hover sur la photo avec la vache */
 .container{
     float: left;
     width: 100%;
 }
-
 
 @media screen and (max-width: 640px){
     .container{
@@ -137,7 +135,7 @@ span{
     .container{
         width: 33.33333%;
     }
-    
+
 }
 @media screen and (max-width: 900px){
     .home{
@@ -226,8 +224,12 @@ span{
 .fadeIn-bottom{
     top: 80%;
 }
-/* Fin */
 
 #footerContaint{
     background-color: #cfd3d2;
+}
+
+#basketButton{
+    display: flex;
+    justify-content: center;
 }

@@ -19,9 +19,11 @@ if (isset($_POST['submitProducer'])) {
     $producer->firstname = isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : '';
     $producer->companyName = isset($_POST['companyName']) ? htmlspecialchars($_POST['companyName']) : '';
     $producer->city = isset($_POST['city']) ? htmlspecialchars($_POST['city']) : '';
-    $imageArray = isset($_FILES['profilPicture']['name']) ? $_FILES['profilPicture']['name'] : '';
+    $imageArray = isset($_FILES['profilPicture']) ? $_FILES['profilPicture'] : '';
     $producer->description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
     $producer->id_7ie1z_roles = 3;
+    
+    debug($imageArray);
 
     // Validation du MAIL PRODUCTEUR
     if (empty($producer->mail)) {
@@ -90,7 +92,7 @@ if (isset($_POST['submitProducer'])) {
 
     if ($fileSize > 1000000) {
         $producer->formErrors['profilPicture'] = 'Le fichier ne doit pas dépasser 1Mo';
-    } elseif ($fileExtension == '.png' && $fileExtension == '.jpg' && $fileExtension == '.jpeg' && $fileExtension == '.gif') {
+    } elseif ($fileExtension !== '.png' && $fileExtension !== '.jpg' && $fileExtension !== '.jpeg' && $fileExtension !== '.gif') {
         $producer->formErrors['profilPicture'] = 'Extension incorrecte';
     }
 
@@ -101,9 +103,9 @@ if (isset($_POST['submitProducer'])) {
 
     // Si toutes les conditions sont remplies et que le tableau d'erreurs est vide
     if (empty($producer->formErrors)) {
-
+        $producer->profilPicture = $fileName;
         // Upload du fichier img sur le server
-        move_uploaded_file($fileSource, '../upload/' .$fileName);
+        move_uploaded_file($fileSource, PRODUCER_LOGO_FOLDER . $fileName);
 
         // Hashage du MDP pour une sécurité supplémentaire +  //Password_default = password_bcrypt (b = blowfish)
         $producer->password = password_hash($producer->password, PASSWORD_DEFAULT);

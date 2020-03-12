@@ -36,9 +36,8 @@ class Producer extends Database {
      * @return boolean
      */
     public function createProducer() {
-        //Éxecution de la requête
         try {
-            // Préparation de la requête au serveur de bdd
+
             $results = $this->db->prepare("INSERT INTO `7ie1z_producers` (`mail`, `password`, `lastname`, `firstname`, `companyName`, `city`, `profilPicture`, `description`, `id_7ie1z_roles`)
                                                   VALUES ( :mail, :password, :lastname, :firstname, :companyName, :city, :profilPicture, :description, :id_roles)");
 

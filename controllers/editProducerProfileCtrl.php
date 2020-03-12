@@ -1,13 +1,15 @@
 <?php
 
-$profile = new Producer();
-
 // Regex SOCIÉTÉ et DESCRIPTION et VILLE
 define('COMPANY_DESCRIPTION_REGEX', '/^[a-zA-Z0-9À-ÿ\' -]+$/');
 // Regex  NOM - PRÉNOM - LIEU
 define('NAME_REGEX', '/^[a-zA-ZÀ-ÿ\' -]+$/');
+// Regex MAIL
+define('MAIL_REGEX', '/^[^\W]?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\.[a-zA-Z]{2,4}$/');
 
 if (isset($_POST['submit'])) {
+
+    $profile = new Producer();
 
     $profile->id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : '';
     $profile->nameCompany = isset($_POST['nameCompany']) ? htmlspecialchars($_POST['nameCompany']) : '';
@@ -18,7 +20,7 @@ if (isset($_POST['submit'])) {
     $profile->firstname = isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : '';
     $profile->city = isset($_POST['city']) ? htmlspecialchars($_POST['city']) : '';
     $profile->description = isset($_POST['descritpion']) ? htmlspecialchars($_POST['description']) : '';
-    $imageArray = isset($_FILES['profilPicture']) ? $_FILES['profilPicture'] : array();
+   
 
     // Changement du NOM DE LASOCIÉTÉ
     if (empty($profile->nameCompany)) {
@@ -67,37 +69,20 @@ if (isset($_POST['submit'])) {
     }
 
     // Changement de VLLE
-    if (empty($producer->city)) {
-        $producer->formErrors['city'] = 'Champs obligatoire';
-    } elseif (!preg_match(COMPANY_DESCRIPTION_REGEX, $producer->city)) {
-        $producer->formErrors['city'] = 'Merci de rentrer un nom correct';
-    } elseif (strlen($producer->city) > 100) {
-        $producer->formErrors['city'] = 'Caractères maximums autorisés';
+    if (empty($profile->city)) {
+        $profile->formErrors['city'] = 'Champs obligatoire';
+    } elseif (!preg_match(COMPANY_DESCRIPTION_REGEX, $profile->city)) {
+        $profile->formErrors['city'] = 'Merci de rentrer un nom correct';
+    } elseif (strlen($profile->city) > 100) {
+        $profile->formErrors['city'] = 'Caractères maximums autorisés';
     }
-
-    // Changement de IMAGE
-    if (empty($imageArray['name'])) {
-        $producer->formErrors['profilPicture'] = 'Champs obligatoire';
-    } else {
-        // Analyse des données du fichier
-        $fileName = strtolower(basename($imageArray['name']));
-        $fileExtension = strrchr($fileName, '.');
-        $fileSource = $imageArray['tmp_name'];
-        $fileSize = filesize($fileSource);
-    }
-    if ($fileSize > 1000000) {
-        $producer->formErrors['profilPicture'] = 'Le fichier ne doit pas dépasser 1Mo';
-    } elseif ($fileExtension != '.png' && $fileExtension != '.jpg' && $fileExtension != '.jpeg' && $fileExtension != '.gif') {
-        $producer->formErrors['profilPicture'] = 'Extension incorrecte';
-    }
-
+    
     //Validation DESCRIPTION
-    if (empty($producer->description)) {
-        $producer->formErrors['description'] = 'Champs obligatoire';
-    } elseif (!preg_match(COMPANY_DESCRIPTION_REGEX, $producer->description)) {
-        $producer->formErrors['description'] = 'Caractères spéciaux non acceptés';
+    if (empty($profile->description)) {
+        $profile->formErrors['description'] = 'Champs obligatoire';
+    } elseif (!preg_match(COMPANY_DESCRIPTION_REGEX, $profile->description)) {
+        $profile->formErrors['description'] = 'Caractères spéciaux non acceptés';
     }
-
 
     // Mise à jour du profil Producteur en BDD 
     if (empty($profile->formErrors)) {
@@ -114,11 +99,10 @@ if (isset($_POST['submit'])) {
             $message = 'Impossible de modifier votre profil';
         }
     }
-} elseif (isset($_GET['id']) && $_GET['id'] > 0) {
+} elseif (isset($_GET['id']) && $_GET['id'] > 0 && isset($_SESSION['user_id']) && isset ($_SESSION['user_role']) && $_GET['id'] == $_SESSION['user_id']) {
+    $producer = new Producer();
 
     $producer->id = htmlspecialchars($_GET['id']);
-
-    //récupération du profil Producteur
     $profile = $producer->producerProfileById();
 
     if (!is_object($profile)) {

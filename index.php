@@ -58,35 +58,35 @@ include 'utilities/header.php';
         <div class="col-md-12">
             <div class="card-deck" >
                 <div class="card">
-                    <img src="assets/img/articles/potatoe.jpeg" class="card-img-top" alt="potatoe">
+                    <img src="upload/articles/potatoe.jpeg" class="card-img-top" alt="potatoe">
                     <div class="card-body">
                         <h5 class="card-title">Pomme de terre Charlotte</h5>
-                        <p class="card-text">1,50€, 500g<button type="button" class="btn btn-success btn-sm ml-4">+</button></p>
-                        <p class="card-text"><small class="text-muted">Vieilliard Christian</small><img src="assets/img/logo/logo3.jpeg" class="ml-4 rounded-circle" name="earlLogo" height="36" width="36"/></p>
+                        <p class="card-text">1,50€, 500g<?php if (isAdmin() || isClient() || isProducer()) { ?><button type="button" class="btn btn-success btn-sm ml-4">+</button></p> <?php } ?>
+                        <p class="card-text"><small class="text-muted">Vieilliard Christian</small><img src="upload/logoProducteur/vieillardChristian.jpeg" class="ml-4 rounded-circle" name="vieillardChristianLogo" height="36" width="36"/></p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="assets/img/articles/chevre.jpeg" class="card-img-top" alt="goatCheese">
+                    <img src="upload/articles/chevre.jpeg" class="card-img-top" alt="goatCheese">
                     <div class="card-body">
                         <h5 class="card-title">Fromage de chèvre frais nature</h5>
-                        <p class="card-text">3,50€, 150g<button type="button" class="btn btn-success btn-sm ml-4">+</button></p>
-                        <p class="card-text"><small class="text-muted">Aux Petits délices de chèvres</small><img src="assets/img/logo/goatLogo.png" class="ml-4 rounded-circle" name="goatLogo" height="36" width="36"/></p>
+                        <p class="card-text">3,50€, 150g<?php if (isAdmin() || isClient()) { ?><button type="button" class="btn btn-success btn-sm ml-4" >+</button></p> <?php } ?>
+                        <p class="card-text"><small class="text-muted">Aux Petits délices de chèvres</small><img src="upload/logoProducteur/délicesChèvres.png" class="ml-4 rounded-circle" name="délicesChèvresLogo" height="36" width="36"/></p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="assets/img/articles/jambon.jpeg" class="card-img-top" alt="ham">
+                    <img src="upload/articles/jambon.jpeg" class="card-img-top" alt="ham">
                     <div class="card-body">
                         <h5 class="card-title">Jambon blanc frais</h5>
-                        <p class="card-text">6,87€, 250g<button type="button" class="btn btn-success btn-sm ml-4">+</button></p>
-                        <p class="card-text"><small class="text-muted">Saveurs des prairies</small><img src="assets/img/logo/logo2.jpeg" class="ml-4 rounded-circle" name="farmLogo" height="36" width="36"/></p>
+                        <p class="card-text">6,87€, 250g<?php if (isAdmin() || isClient()) { ?><button type="button" class="btn btn-success btn-sm ml-4">+</button></p> <?php } ?>
+                        <p class="card-text"><small class="text-muted">Saveurs des prairies</small><img src="upload/logoProducteur/saveursPraries.jpeg" class="ml-4 rounded-circle" name="saveursPrairiesLogo" height="36" width="36"/></p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="assets/img/articles/pear.jpeg" class="card-img-top" alt="pear">
+                    <img src="upload/articles/poire.jpeg" class="card-img-top" alt="pear">
                     <div class="card-body">
                         <h5 class="card-title">Poire conférence</h5>
-                        <p class="card-text">3,80€, 2kg<button type="button" class="btn btn-success btn-sm ml-4">+</button></p>
-                        <p class="card-text"><small class="text-muted">Les vergers du petit marais</small><img src="assets/img/logo/logo4.jpeg" class="ml-4 rounded-circle" name="fruitsLogo" height="36" width="36"/></p>
+                        <p class="card-text">3,80€, 2kg<?php if (isAdmin() || isClient()) { ?><button type="button" class="btn btn-success btn-sm ml-4">+</button></p> <?php } ?>
+                        <p class="card-text"><small class="text-muted">Les vergers du petit marais</small><img src="upload/logoProducteur/vergersPetitMarais.jpeg" class="ml-4 rounded-circle" name="vergersPetitMaraisLogo" height="36" width="36"/></p>
                     </div>
                 </div>
             </div>

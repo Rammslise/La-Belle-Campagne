@@ -9,7 +9,7 @@
         <ul class="navbar-nav">
             <img src="../assets/img/navbar/cabbage.png" class="d-inline-block align-top" width="35" height="35" />
             <li class="nav-item active">              
-                <a class="nav-link" href="">Légumes <span class="sr-only">(current)</span>|</a>
+                <a class="nav-link" href="../views/productList.php">Légumes <span class="sr-only">(current)</span>|</a>
             </li>
             <img src="../assets/img/navbar/raspberry.png" class="d-inline-block align-top" width="30" height="32" />
             <li class="nav-item">

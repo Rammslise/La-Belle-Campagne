@@ -8,6 +8,11 @@ require '../models/client.php';
 require_once '../controllers/clientProfileCtrl.php';
 require_once '../views/editClientProfile.php';
 include '../utilities/header.php';
+
+if (isProducer()) {
+    header('Location: ../index.php');
+    exit();
+}
 ?>
 <!--Message  -->
 <?php if (isset($message)) { ?>

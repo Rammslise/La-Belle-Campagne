@@ -34,7 +34,7 @@
                                 <?= 'Bonjour et bienvenue'; ?>
                             </a>  |
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="../views/producerProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>">Votre compte</a>
+                                <a class="dropdown-item" href="../views/editProducerProfile.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>">Votre compte</a>
                                 <a class="dropdown-item" href="../views/createProduct.php">Ajouter un article</a>
                                 <a class="dropdown-item" href="../views/producerProduct.php?id=<?= htmlspecialchars($_SESSION['user_id']) ?>">Vos produits</a>
                                 <a class="dropdown-item" href="">Nous contacter</a>
@@ -72,13 +72,14 @@
                         <li><a href="../views/connexion.php">Connexion</a>|</li>                         
                     <?php } ?>
                     <li>
-                        <a href="../views/basket.php" >Panier</a>   
-                        <img src="../assets/img/header/basket.png" class="img-fluid mb-2" alt="basketLogo" width="20"/>           
+                        <?php if (isAdmin() || isClient()) { ?>
+                            <a href="../views/basket.php" >Panier</a>   
+                            <img src="../assets/img/header/basket.png" class="img-fluid mb-2" alt="basketLogo" width="20"/>  
+                        <?php } ?>
                     </li>
                 </ul>
             </div>
         </div>            
     </div>  
 </header>
-
 <?php include 'navbar.php'; ?>

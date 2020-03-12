@@ -8,7 +8,7 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
     $product->id_7ie1z_producers = htmlspecialchars($_GET['id']);
 
     $producerProfile = $producer->producerProfileById();
-    $productInfos = $product->createProduct();
+    $productInfos = $product->getProductList();
 
     if (!is_object($producerProfile)) {
         header('Location: ../views/producerProduct.php');

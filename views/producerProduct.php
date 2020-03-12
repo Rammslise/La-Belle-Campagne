@@ -8,16 +8,18 @@ require '../models/producer.php';
 require '../models/product.php';
 require_once '../controllers/producerProductCtrl.php';
 include '../utilities/header.php';
+
+if (isClient()) {
+    header('Location: ../index.php');
+    exit();
+}
 ?>
-<?php foreach ($productInfos as $infos) { ?>
-    <li><?= $infos->weight; ?></li>
-<?php } ?>                 
-<div class="card" style="width: 18rem;">
-    <img src="<?= $infos->productPicture; ?>" class="card-img-top" alt="">
+      <div class="card mt-4" style="width: 18rem;">
+          <img src="<?= PRODUCT_IMAGE_FOLDER . $productInfos->productPicture ?>" class="card-img-top" alt="">
     <div class="card-body">
-        <h5 class="card-title"><?= $infos->name; ?></h5>
-        <p class="card-text">Poids : <?= $infos->weight; ?></p>
-        <p class="card-text">Prix : <?= $infos->price; ?></p>
+        <h5 class="card-title"><?= $productInfos ->name; ?></h5>
+        <p class="card-text">Poids : <?= $productInfos ->weight; ?></p>
+        <p class="card-text">Prix : <?= $productInfos ->price; ?></p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
 </div>  

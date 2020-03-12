@@ -48,7 +48,7 @@ include '../utilities/header.php';
             <!-- Formulaire client -->
             <div class="tab-pane fade show active" id="client" role="tabpanel" aria-labelledby="home-tab">   
                 <form method="POST" action="" id="formClient">
-                    <!-- Enregistrer son mot de passe-->
+                    <!-- Enregistrer son pseudo-->
                     <div class="form-group row">
                         <label for="pseudo" class="col-md-6 col-form-label">Pseudo*</label>
                         <div class="col-md-10">
