@@ -1,9 +1,4 @@
 <?php
-//if(!isAdmin() || isProducer() || (isClient() && $_SESSION['user_id'] != $_GET['id'] )){
-//    header('Location: clientList.php');
-//    exit();
-//}
-
 $profile = new Client();
 
 //regex MAIL

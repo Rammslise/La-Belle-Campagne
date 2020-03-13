@@ -82,12 +82,12 @@ class Client extends Database {
     public function clientProfile() {
         try {
             $results = $this->db->prepare('SELECT `id`, 
-                                                                                 `mail`, 
-                                                                                 `password`, 
-                                                                                 `pseudo`, 
-                                                                                 `id_7ie1z_roles` 
-                                                                   FROM `7ie1z_clients`
-                                                                   WHERE `mail` =:mail');
+                                                                                    `mail`, 
+                                                                                    `password`, 
+                                                                                    `pseudo`, 
+                                                                                    `id_7ie1z_roles` 
+                                                                   FROM      `7ie1z_clients`
+                                                                   WHERE    `mail` =:mail');
             $results->bindValue(':mail', $this->mail, PDO::PARAM_STR);
             $results->execute();
             return $results->fetch(PDO::FETCH_OBJ);
@@ -108,8 +108,8 @@ class Client extends Database {
                                                                                   `password`, 
                                                                                   `pseudo`,    
                                                                                   `id_7ie1z_roles` 
-                                                               FROM `7ie1z_clients`
-                                                               WHERE `id`= :id');
+                                                               FROM         `7ie1z_clients`
+                                                               WHERE      `id`= :id');
             $results->bindValue(':id', $this->id, PDO::PARAM_INT);
             $results->execute();
             return $results->fetch(PDO::FETCH_OBJ);

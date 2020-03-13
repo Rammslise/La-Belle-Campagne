@@ -11,12 +11,12 @@ header{
 a{
     text-decoration: none;
     overflow: hidden;
-    color: black;
+    color: #8c4d1e;
 }
 
 a:hover{
     text-decoration: none;
-    color: #8c4d1e;
+    color: #00902f;
 }
 
 ul {

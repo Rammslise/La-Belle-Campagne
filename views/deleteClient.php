@@ -7,12 +7,6 @@ require '../models/database.php';
 require '../models/client.php';
 require_once '../controllers/deleteClientCtrl.php';
 
-if(isAdmin()){
-    header('Location: clientList.php');
-    exit();
-} else {
-    header('Location: ../index.php');
-}
 ?>
 
 
