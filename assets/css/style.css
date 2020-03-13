@@ -116,6 +116,9 @@ span{
     width: 120px;
 }
 
+#logoHeader{
+    margin-left: 60%;
+}
 .container{
     float: left;
     width: 100%;
@@ -129,23 +132,36 @@ span{
     #vegetableStrip{
         display: none;
     }
+    #logoHeader{
+        display: none;
+    }
+    .responsive {
+        width: auto;
+        height: auto;
+    }
+    #navbarNav .img{
+        display: none;
+    }
 }
 
 @media screen and (min-width: 900px){
     .container{
         width: 33.33333%;
     }
-
 }
+
 @media screen and (max-width: 900px){
     .home{
         display: flex;
         flex-direction: column;
     }
+
     #vegetableStrip{
         display: none;
     }
+    
 }
+
 .container .title{
     color: #1a1a1a;
     text-align: center;
@@ -233,3 +249,6 @@ span{
     display: flex;
     justify-content: center;
 }
+.search{
+    margin-left: 31%;
+}   

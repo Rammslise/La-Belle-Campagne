@@ -25,17 +25,17 @@ include 'utilities/header.php';
                 <div id="homeCarousel" class="carousel slide col-md-4" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="assets/img/body/market.jpg" class="d-block w-100 img-fluid" alt="market" />
+                            <img src="assets/img/body/market.jpg" class="d-block" alt="market" />
                         </div>
                         <div class="carousel-item">
-                            <img src="assets/img/body/soissonsBeans.jpg" class="d-block w-100 img-fluid" alt="beans" />
+                            <img src="assets/img/body/soissonsBeans.jpg" class="d-block" alt="beans" />
                             <div class="carousel-caption d-none d-md-block">
                                 <h4><span>Ils reviennent</span></h4>
                                 <p>Les fameux haricots de Soissons sont de nouveaux parmis nous</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="assets/img/body/pub.jpg" class="d-block w-100 img-fluid" alt="publicity" />
+                            <img src="assets/img/body/pub.jpg" class="d-block" alt="publicity" />
                         </div>
                     </div>
                 </div>    

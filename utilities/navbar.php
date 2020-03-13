@@ -28,9 +28,9 @@
                 <a class="nav-link" href="">Épicerie |</a>
             </li>
         </ul>
-        <form class="form-inline">
-            <input class="form-control ml-sm-2" type="search" placeholder="Recherche" aria-label="Search">
-            <button class="btn"><i class="fas fa-search"></i></button>
+        <form class="form-inline my-0 my-lg-0 search" method="POST" action="">
+            <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+            <button class="btn"><i class="fas fa-search" width="30" height="30"></i></button>
         </form>
     </div>
 </nav>

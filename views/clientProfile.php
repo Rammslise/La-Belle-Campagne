@@ -86,18 +86,16 @@ if (isProducer()) {
                         </small>
                     </div>
                 </div>
-            </div>
-            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                <button type="submit" name="submit" class="btn btn-success rounded-pill  mt-2 mr-1"><span>Modifier</span></button>                                                                                               
-                <button name="delete" class="btn btn-danger rounded-pill mt-2" data-toggle="modal" data-target="#modal-<?= $clientProfile->id ?>"><span>Supprimer</span></button>
-                <a href="deconnexion.php"><button class="btn rounded-pill mt-2 "><i class="fas fa-power-off"></i></button></a>              
-            </div>                                                       
+            </div>   
+            <button type="submit" name="submit" class="btn btn-success rounded-pill  mt-2 mr-1"><span>Modifier</span></button>                                                                                               
         </form>
+        <button name="delete" class="btn btn-danger rounded-pill mt-2" data-toggle="modal" data-target="#modal-<?= $client->id ?>"><span>Supprimer</span></button>
+        <a href="deconnexion.php"><button class="btn rounded-pill mt-2 "><i class="fas fa-power-off"></i></button></a>                                                                            
     </div>
 </div>
 <?php include '../utilities/footer.php'; ?>
 <!-- Modal -->
-<div class="modal fade" id="modal-<?= $clientProfile->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-<?= $client->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -110,8 +108,8 @@ if (isProducer()) {
                 Vous allez nous manquer, êtes vous sûr de vouloir supprimer votre compte ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <a href="deleteClient.php?id=<?= $clientProfile->id ?>" class="btn btn-primary">Confimer</a>
+                <button type="button" class="btn btn-secondary rounded-pill" data-dismiss="modal">Annuler</button>
+                <a href="deleteClient.php?id=<?= $client->id ?>" class="btn btn-primary rounded-pill"><span>Confimer</span></a>
             </div>
         </div>
     </div>

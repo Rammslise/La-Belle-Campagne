@@ -24,7 +24,7 @@
                 </blockquote>
             </div>
             <div class="col-md-4 text-center">
-                <img src="../assets/img/header/logoHeader.png" class="img-fluid" alt="logoTree" id="logoHeader"/>
+                <img src="../assets/img/header/logoHeader.png" class="responsive"  alt="logoTree" id="logoHeader"/>
             </div>  
             <div class="col-md-4 mt-4">              
                 <ul id="linkHeader">

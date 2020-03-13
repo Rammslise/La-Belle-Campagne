@@ -152,14 +152,12 @@ if (isClient()) {
                         </small>
                     </div>
                 </div>
-                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                    <button type="submit" name="submit" class="btn btn-success rounded-pill  mt-2 mr-1"><span>Modifier</span></button>                                                                                               
-                    <button name="delete" class="btn btn-danger rounded-pill mt-2" data-toggle="modal" data-target="#modal-<?= $producer->id ?>"><span>Supprimer</span></button>
-                    <a href="deconnexion.php"><button class="btn rounded-pill mt-2 "><i class="fas fa-power-off"></i></button></a>              
-                </div>
+                <button class="btn btn-success rounded-pill mt-2 mr-1"name="submit"  style="white"><span>Modifier</span></button>                                                                                               
             </div>   
         </div>
     </form>
+    <button name="delete" class="btn btn-danger rounded-pill mt-2" data-toggle="modal" data-target="#modal-<?= $producer->id ?>"><span>Supprimer</span></button>
+    <a href="deconnexion.php"><button class="btn rounded-pill mt-2 "><i class="fas fa-power-off"></i></button></a>              
 </div>
 <?php include '../utilities/footer.php'; ?>
 <!-- Modal -->
@@ -177,7 +175,7 @@ if (isClient()) {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <a href="deleteProducer.php?id=<?= $profile > id ?>" class="btn btn-primary">Confimer</a>
+                <a href="deleteProducer.php?id=<?= $producer->id ?>" class="btn btn-primary">Confimer</a>
             </div>
         </div>
     </div>

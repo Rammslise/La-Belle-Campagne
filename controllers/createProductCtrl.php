@@ -23,11 +23,11 @@ if (isset($_POST['submit'])) {
         $product->id_7ie1z_producers = $producer->producerProfile()->id;
         $success = $product->createProduct();
         if ($success) {
-            $_SESSION['message'] = 'La fiche produit a bien été créée';
+            $_SESSION['message'] = 'Votre compte a bien été créée';
             header('Location: ../views/producerProduct.php');
             exit();
         } else {
-            $message = 'La fiche n\'a pas pu être créée';
+            $message = 'Le compte n\'a pas pu être créée';
         }
     }
 }

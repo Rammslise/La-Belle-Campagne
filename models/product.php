@@ -83,25 +83,26 @@ class Product extends Database {
     /**
      * Méthode permettant de récupérer les informations d'un produit
      * @return array
-     
-    public function getProductInfo() {
+     */
+    public function getProduct() {
         try {
-            $results = $this->db->prepare('SELECT  `7ie1z_products`.`id`,                                            
-                                                                                  `7ie1z_producers`.`lastname`,
-                                                                                  `7ie1z_producers`.`firstname`,
-                                                                                  `7ie1z_producers`.`companyName`
-                                                                   FROM     `7ie1z_products`
-                                                                   INNER JOIN `7ie1z_producers`
-                                                                   ON `7ie1z_producers`.`id` = `7ie1z_products`.`id_7ie1z_producers`
-                                                                   WHERE `7ie1z_products`.`id` = :id');
-            $results->bindValue(':id', $this->id, PDO::PARAM_INT);
-            $results->execute();
+            $results = $this->db->query('SELECT  `7ie1z_products`.`id`, 
+                                                                              `7ie1z_products`.`name`, 
+                                                                              `7ie1z_products`.`description`,
+                                                                              `7ie1z_products`.`price`, 
+                                                                              `7ie1z_products`.`weight`, 
+                                                                              `7ie1z_products`.`productPicture`, 
+                                                                             `7ie1z_products`. `id_7ie1z_producers`,
+                                                                             `7ie1z_products`.`id_7ie1z_categories`,
+                                                                             `7ie1z_producers`.`companyName`                                                                                
+                                                          FROM   `7ie1z_products`
+                                                          INNER JOIN `7ie1z_producers`
+                                                          ON `7ie1z_producers`.`id` = `7ie1z_products`.`id_7ie1z_producers`');
             return $results->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             die('Error :' . $e->getMessage());
         }
     }
-*/ 
     
     /**
      * Méthode permettant d'afficher les produits d'un producteur

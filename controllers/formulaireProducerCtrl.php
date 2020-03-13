@@ -23,8 +23,6 @@ if (isset($_POST['submitProducer'])) {
     $producer->description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
     $producer->id_7ie1z_roles = 3;
     
-    debug($imageArray);
-
     // Validation du MAIL PRODUCTEUR
     if (empty($producer->mail)) {
         $producer->formErrors['mail'] = 'Champs obligatoire';

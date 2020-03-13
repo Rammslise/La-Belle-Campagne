@@ -2,10 +2,10 @@
 
 session_start();
 
-require_once '../init/functions.php';
-require_once '../init/credentials.php';
-require_once '../models/database.php';
-require_once '../models/product.php';
+require '../init/functions.php';
+require '../init/credentials.php';
+require '../models/database.php';
+require '../models/product.php';
 require_once '../controllers/addCartCtrl.php';
 ?>
 
